@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-offset-3 col-sm-6">
-      <%= simple_form_for [@user, @equipment, @reservation] do |r| %>
+      <%= simple_form_for [@playground, @reservation] do |r| %>
       <%= r.input :date_begin, input_html: { title: 'date de début', placeholder: '01/09/2018' } %>
       <%= r.input :date_end, input_html: { title: 'date de fin', placeholder: '03/09/2018' } %>
       <%= r.submit "ask for reservation", class: "btn btn-primary" %>
