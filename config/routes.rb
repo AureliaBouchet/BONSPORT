@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :equipments do
+  resources :playgrounds do
     resources :reservations, only: [:new, :create]
   end
 
