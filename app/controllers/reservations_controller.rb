@@ -12,7 +12,7 @@ class ReservationsController < ApplicationController
     @reservation.user = current_user
 
     if @reservation.save
-      redirect_to root
+      redirect_to root_path
     else
       render "reservations/new"
     end
