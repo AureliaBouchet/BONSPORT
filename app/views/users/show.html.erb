@@ -3,11 +3,19 @@
     <h1>My profile</h1>
     <h2>My informations</h2>
       <div class="info">
-        <span><img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan"></span>
-        <span>Prénom</span>
-        <span>Nom</span>
+        <span> <%= cl_image_tag current_user.photo, class: "avatar-large" %></span>
+        <span><%= current_user.first_name.capitalize %></span>
+        <span><%= current_user.last_name.capitalize %></span>
+        <span> <%= link_to "edit", edit_user_path(current_user) %> </span>
+      </div>
+
+      <h2>My account</h2>
+      <div class="info">
+        <span><%= current_user.email %></span>
+        <span> <%= link_to "edit password", edit_user_password_path %> </span>
       </div>
   </div>
+
 
   <h2>My reservations</h2>
   <div class="row">
@@ -15,8 +23,8 @@
       <div class="reservation-dash">
         <div class="reservation-user"
            <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
-          <span>Prénom</span>
-          <span>Nom</span>
+          <span><%= reservation.user.first_name.capitalize %></span>
+          <span><%= reservation.user.last_name.capitalize %></span>
         </div>
         <div class="reservation-date text-center">
           <span> Reservation from : <%= reservation.date_begin %> to : <%= reservation.date_end %></span>
@@ -26,6 +34,7 @@
         </div>
       </div>
       <% end %>
+
     </div>
 
   <h2>My playgrounds</h2>
