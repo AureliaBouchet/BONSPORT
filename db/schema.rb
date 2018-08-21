@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2018_08_21_093832) do
   create_table "reservations", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "equipment_id"
-    t.string "status"
+    t.string "status", default: "pending"
     t.date "date_begin"
     t.date "date_end"
     t.datetime "created_at", null: false
