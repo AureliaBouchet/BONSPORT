@@ -1,0 +1,46 @@
+<div class="container">
+  <div>profile
+    <h1>My profile</h1>
+
+    <h2>My information</h2>
+    <p>Prénom</p>
+    <p>Nom</p>
+     <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+  </div>
+
+  <h2>My reservations</h2>
+  <div class="row">
+      <% Reservation.where(user: current_user).each do |reservation| %>
+      <div class="reservation-dash">
+        <div class="reservation-user"
+           <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+          <p>Prénom</p>
+          <p>Nom</p>
+        </div>
+        <div class="reservation-date">
+          <h3><%= reservation.date_begin %></h3>
+          <p><%= reservation.date_end %></p>
+        </div>
+        <div class="reservation-status">
+          <p class="status pending"><%= reservation.status %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+  <h2>My playgrounds</h2>
+    <div class="row">
+      <% Playground.where(user:@user).each do |playground| %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path playground.photo, height: 300, width: 400, crop: :fill %>);">
+            <div class="card-category"><%=playground.category%> <%="-"%> <%=playground.price%> <%="€/h"%></div>
+            <div class="card-description">
+              <h2><%=playground.title%></h2>
+              <p><%=playground.address%></p>
+            </div>
+            <a class="card-link" href="#" ><%= link_to "", playground_path(playground.id) %></a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>

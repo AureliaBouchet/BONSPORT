@@ -1,0 +1,21 @@
+.reservation-dash {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(220,224,244,0.4);
+}
+
+.reservation-dash:last-child {
+  border-bottom: none;
+}
+.reservation-date {
+  flex-grow: 1;
+  padding-left: 10px;
+  font-size: 13px;
+  color: rgba(0,0,0,0.7);
+}
+
+.reservation-status {
+  font-size: 14px;
+  font-weight: bold;
+}
