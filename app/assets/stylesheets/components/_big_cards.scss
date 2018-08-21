@@ -1,46 +1,77 @@
 h1 {
-text-align: left;
+text-align: center;
+padding-top: 30px;
+padding-bottom: 50px;
 }
 
-.card {
-  height: 175px;
+.show-general{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 20px;
+  background-color: #bdcebe;
+}
+.show {
+  height: 300px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  background-size: cover !important;
+  background-repeat: no-repeat;
   background-position: center;
   color: white;
   position: relative;
   margin: 10px 10px;
 }
-.card-user {
+.show-user {
   position: absolute;
   right: 10px;
   top: 10px;
   width: 40px;
   border-radius: 50%;
 }
-.card-category {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+.show-category {
+  position: relative;
+  text-align: center;
+  top: 20px;
+  left: 20px;
   font-size: 15px;
   text-transform: uppercase;
 }
 
-.card-price {
-
+.show-price {
+  position: relative;
+  text-align: center;
+  top: 20px;
+  left: 20px;
+  font-size: 15px;
+  text-transform: uppercase;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-.card.address {
-
+.show-address {
+  position: relative;
+  text-align: center;
+  top: 20px;
+  left: 20px;
+  font-size: 20px;
+  font-style: bold;
+  text-transform: uppercase;
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
 
-.card-description {
-  position: absolute;
+.show-description {
+  position: relative;
+  text-align: center;
+  font-style: italic;
+  top: 20px;
   bottom: 10px;
   left: 10px;
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-bottom: 100px;
 }
 
-.card-link {
+.show-link {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -52,4 +83,18 @@ text-align: left;
 }
 .card-link:hover {
   opacity: 0.1;
+}
+
+.btn {
+    background-color: white; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    font-size: 16px;
+    width: 200px;
 }
