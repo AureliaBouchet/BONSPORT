@@ -1,0 +1,25 @@
+<div class="show-general">
+<h1><%= @playground.title %></h1>
+
+<div class="show" style="background-image: url('<%= cl_image_path @playground.photo, crop: :fill %>')">
+</div>
+<!--  -->
+
+<div class="show-category"><%= @playground.category %></div>
+<!--  -->
+<div class="show-price"><%= @playground.price %> €/h</div>
+<!--  -->
+
+<div class="show-address"><%= @playground.address %></div>
+<!--  -->
+
+<div class="show-description"> <%= @playground.description %> </div>
+<!--  -->
+
+<!-- <img class="show-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
+<!-- <a class="show-link" href="#" ></a>
+ -->
+<button type="button" class="btn btn-default"><%= link_to "Back to list", playgrounds_path %></button>
+
+</div>
+
