@@ -9,8 +9,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @playground = Playground.find(params[:playground_id])
     @reservation.playground = @playground
-    @user = current_user
-    @reservation.user = @user
+    @reservation.user = current_user
 
     if @reservation.save
       redirect_to root
