@@ -1,12 +1,21 @@
-<div class="container">
-  <div>profile
+<div class="container dashboard">
+  <div class="profile">
     <h1>My profile</h1>
+    <h2>My informations</h2>
+      <div class="info">
+        <span> <%= cl_image_tag current_user.photo, class: "avatar-large" %></span>
+        <span><%= current_user.first_name.capitalize %></span>
+        <span><%= current_user.last_name.capitalize %></span>
+        <span> <%= link_to "edit", edit_user_path(current_user) %> </span>
+      </div>
 
-    <h2>My information</h2>
-    <p>Prénom</p>
-    <p>Nom</p>
-     <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+      <h2>My account</h2>
+      <div class="info">
+        <span><%= current_user.email %></span>
+        <span> <%= link_to "edit password", edit_user_password_path %> </span>
+      </div>
   </div>
+
 
   <h2>My reservations</h2>
   <div class="row">
@@ -14,18 +23,18 @@
       <div class="reservation-dash">
         <div class="reservation-user"
            <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
-          <p>Prénom</p>
-          <p>Nom</p>
+          <span><%= reservation.user.first_name.capitalize %></span>
+          <span><%= reservation.user.last_name.capitalize %></span>
         </div>
-        <div class="reservation-date">
-          <h3><%= reservation.date_begin %></h3>
-          <p><%= reservation.date_end %></p>
+        <div class="reservation-date text-center">
+          <span> Reservation from : <%= reservation.date_begin %> to : <%= reservation.date_end %></span>
         </div>
         <div class="reservation-status">
           <p class="status pending"><%= reservation.status %></p>
         </div>
       </div>
       <% end %>
+
     </div>
 
   <h2>My playgrounds</h2>
