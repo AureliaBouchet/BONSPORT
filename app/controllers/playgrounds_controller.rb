@@ -6,4 +6,9 @@ class PlaygroundsController < ApplicationController
   def create
 
   end
+
+  def show
+    @playground = Playground.find(params[:id])
+  end
+
 end
