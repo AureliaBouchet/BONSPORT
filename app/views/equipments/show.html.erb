@@ -1,0 +1,21 @@
+<h1><%= @playground.title %></h1>
+
+<div class="card" style="background-image: url(<%= cl_image_path playground.photo, height: 500, width: 400, crop: :fill %>);">
+</div>
+
+<div class="card-category"><%= @playground.category %></div> <div class="card-price"><%= @playground.price %></div>
+
+<div class="card-address"><%= @playground.address %></div>
+
+<div class="card-description"> <%= @playground.description %> </div>
+
+<img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+<a class="card-link" href="#" ></a>
+
+<%= link_to "Back to list", playgrounds_path %>
+
+
+
+
+
+
