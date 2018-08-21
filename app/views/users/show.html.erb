@@ -1,11 +1,12 @@
-<div class="container">
-  <div>profile
+<div class="container dashboard">
+  <div class="profile">
     <h1>My profile</h1>
-
-    <h2>My information</h2>
-    <p>Prénom</p>
-    <p>Nom</p>
-     <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+    <h2>My informations</h2>
+      <div class="info">
+        <span><img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan"></span>
+        <span>Prénom</span>
+        <span>Nom</span>
+      </div>
   </div>
 
   <h2>My reservations</h2>
@@ -14,12 +15,11 @@
       <div class="reservation-dash">
         <div class="reservation-user"
            <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
-          <p>Prénom</p>
-          <p>Nom</p>
+          <span>Prénom</span>
+          <span>Nom</span>
         </div>
-        <div class="reservation-date">
-          <h3><%= reservation.date_begin %></h3>
-          <p><%= reservation.date_end %></p>
+        <div class="reservation-date text-center">
+          <span> Reservation from : <%= reservation.date_begin %> to : <%= reservation.date_end %></span>
         </div>
         <div class="reservation-status">
           <p class="status pending"><%= reservation.status %></p>
