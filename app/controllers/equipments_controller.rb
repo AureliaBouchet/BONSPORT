@@ -1,2 +1,3 @@
 class EquipmentsController < ApplicationController
+
 end
