@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :reservations
   has_many :reviews
-  has_many :equipments
+  has_many :playgrounds
 end

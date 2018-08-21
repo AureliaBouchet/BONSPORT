@@ -1,0 +1,14 @@
+<h1>Add a Playground</h1>
+
+<div class="form">
+  <%= simple_form_for @playground do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :category %>
+    <%= f.input :address %>
+    <%= f.input :price %>
+    <%= f.input :photo %>
+
+    <%= f.submit "add a playground", class: "btn btn-primary" %>
+  <% end %>
+</div>

@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
   belongs_to :user
-  belongs_to :equipment
+  belongs_to :playground
 
 
 end
