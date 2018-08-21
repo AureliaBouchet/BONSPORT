@@ -1,4 +1,3 @@
-
 puts 'cleaning database...'
 Playground.destroy_all
 
@@ -42,7 +41,7 @@ playground_seven.remote_photo_url = "https://images.unsplash.com/photo-152121676
 playground_seven.user = User.last
 playground_seven.save
 
-playground_eight = Playground.new(title: "Terrain de pétanque", category: "Terrain de tennis", price: 22, address: "Montélimar", description: "Constituendi autem sunt qui sint in amicitia fines et quasi termini diligendi. De quibus tres video sententias ferri, quarum nullam probo, unam, ut eodem modo erga amicum adfecti simus, quo erga nosmet ipsos, alteram, ut nostra in amicos benevolentia illorum erga nos benevolentiae pariter aequaliterque respondeat, tertiam, ut, quanti quisque se ipse facit, tanti fiat ab amicis.")
+playground_eight = Playground.new(title: "Terrain de compétition", category: "Terrain de tennis", price: 22, address: "Montélimar", description: "Constituendi autem sunt qui sint in amicitia fines et quasi termini diligendi. De quibus tres video sententias ferri, quarum nullam probo, unam, ut eodem modo erga amicum adfecti simus, quo erga nosmet ipsos, alteram, ut nostra in amicos benevolentia illorum erga nos benevolentiae pariter aequaliterque respondeat, tertiam, ut, quanti quisque se ipse facit, tanti fiat ab amicis.")
 playground_eight.remote_photo_url = "https://images.unsplash.com/photo-1533124436425-a9c6f384f199?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6835d45e6c896676b66ec7ce829ebe47&auto=format&fit=crop&w=500&q=60
 https://images.unsplash.com/photo-1533124436425-a9c6f384f199?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6835d45e6c896676b66ec7ce829ebe47&auto=format&fit=crop&w=500&q=60"
 playground_eight.user = User.last
