@@ -4,7 +4,10 @@ class PlaygroundsController < ApplicationController
   end
 
   def create
+  end
 
+  def index
+    @playgrounds = Playground.all
   end
 
   def show
