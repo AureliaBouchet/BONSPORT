@@ -1,15 +1,18 @@
-<div class="container">
-  <h1 class="text-center">Add a reservation</h1>
+<div class="show-general">
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6">
+      <h1 class="text-center">Ajouter une demande de réservation</h1>
 
-  <h2>Récapitulatif de la réservation :</h2>
-  <ul>
-    <li><%= @playground.title %></li>
-    <li><%= @playground.description%></li>
-    <li>Category : <%= @playground.category %></li>
-    <li>Prix : <%= @playground.price %></li>
-  </ul>
+      <h2>Récapitulatif de la réservation :</h2>
+      <ul id="new-resa">
+        <li><%= @playground.title %></li>
+        <li class="text-justify"><%= @playground.description%></li>
+        <li>Catégorie : <%= @playground.category %></li>
+        <li>Prix : <%= @playground.price %>€/h</li>
+      </ul>
 
-<h2>Choix des dates :</h2>
-  <%= render 'shared/form_resa', reservation: @reservation %>
-
+    <h2>Choix des dates :</h2>
+      <%= render 'shared/form_resa', reservation: @reservation %>
+    </div>
+  </div>
 </div>
