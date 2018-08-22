@@ -1,6 +1,15 @@
 <div class="container">
-  <h1 class="text-center">add a reservation</h1>
+  <h1 class="text-center">Add a reservation</h1>
 
+  <h2>Récapitulatif de la réservation :</h2>
+  <ul>
+    <li><%= @playground.title %></li>
+    <li><%= @playground.description%></li>
+    <li>Category : <%= @playground.category %></li>
+    <li>Prix : <%= @playground.price %></li>
+  </ul>
+
+<h2>Choix des dates :</h2>
   <%= render 'shared/form_resa', reservation: @reservation %>
 
 </div>
