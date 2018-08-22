@@ -3,7 +3,11 @@
     <h1>My profile</h1>
     <h2>My informations</h2>
       <div class="info">
-        <% user_avatar = current_user.photo || 'user.jpg' %>
+        <% if current_user.photo.file.nil? %>
+          <% user_avatar = 'user.jpg' %>
+        <% else %>
+          <% user_avatar = current_user.photo %>
+        <% end %>
         <%= cl_image_tag user_avatar, class: "avatar-large" %>
         <%= current_user.first_name.capitalize %>
         <%= current_user.last_name.capitalize %>
@@ -38,7 +42,11 @@
 
           <div class="img-user">
 
-          <% proprio_avatar = reservation.playground.user.photo || 'user.jpg' %>
+          <% if reservation.playground.user.photo.file.nil? %>
+            <% proprio_avatar = 'user.jpg' %>
+          <% else %>
+            <% proprio_avatar = reservation.playground.user.photo %>
+          <% end %>
           <%= cl_image_tag proprio_avatar, class: "avatar-large" %>
            </div>
            </div>
@@ -87,7 +95,11 @@
           </div>
           <div class="reservation-user">
          <div class="img-user">
-          <% locataire_avatar = reservation.user.photo || 'user.jpg' %>
+          <% if reservation.user.photo.file.nil? %>
+            <% locataire_avatar = 'user.jpg' %>
+          <% else %>
+            <% locataire_avatar = reservation.user.photo %>
+          <% end %>
           <%= cl_image_tag locataire_avatar, class: "avatar-large" %>
            </div>
 
