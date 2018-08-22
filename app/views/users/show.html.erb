@@ -3,10 +3,11 @@
     <h1>My profile</h1>
     <h2>My informations</h2>
       <div class="info">
-        <span> <%= cl_image_tag current_user.photo, class: "avatar-large" %></span>
-        <span><%= current_user.first_name.capitalize %></span>
-        <span><%= current_user.last_name.capitalize %></span>
-        <span> <%= link_to "edit", edit_user_path(current_user) %> </span>
+        <% user_avatar = current_user.photo.file || 'user.jpg' %>
+        <%= cl_image_tag user_avatar, class: "avatar-large" %>
+        <%= current_user.first_name.capitalize %>
+        <%= current_user.last_name.capitalize %>
+        <%= link_to "edit", edit_user_path(current_user) %>
       </div>
 
       <h2>My account</h2>
@@ -34,13 +35,15 @@
       <% Reservation.where(user: current_user).each do |reservation| %>
       <div class="reservation-dash">
         <div class="reservation-user">
+
           <div class="img-user">
-           <%= cl_image_tag reservation.playground.user.photo, class: "avatar-large", crop: :thumb, gravity: :face%>
+     
+          <% proprio_avatar = reservation.playground.user.photo.file || 'user.jpg' %>
+          <%= cl_image_tag proprio_avatar, class: "avatar-large" %>
+           </div>
            </div>
           <span><%= reservation.playground.user.first_name.capitalize %></span>
           <span><%= reservation.playground.user.last_name.capitalize %></span>
-
-
         </div>
         <div class="reservation-date text-center">
           <span> Reservation from : <%= reservation.date_begin %> to : <%= reservation.date_end %></span>
@@ -84,7 +87,8 @@
           </div>
           <div class="reservation-user">
          <div class="img-user">
-           <%= cl_image_tag reservation.user.photo, class: "avatar-large", crop: :thumb, gravity: :face%>
+          <% locataire_avatar = reservation.user.photo.file || 'user.jpg' %>
+          <%= cl_image_tag locataire_avatar, class: "avatar-large" %>
            </div>
 
             <span><%= reservation.user.first_name.capitalize %></span>
