@@ -21,9 +21,8 @@
 
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <% user_avatar = current_user.photo.file || 'user.jpg' %>
+          <% user_avatar = current_user.photo || 'user.jpg' %>
           <%= cl_image_tag user_avatar, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-
 
 
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
@@ -45,7 +44,7 @@
   <!-- SMALL DEVICE -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
-      <% user_avatar = current_user.photo.file || 'user.jpg' %>
+      <% user_avatar = current_user.photo || 'user.jpg' %>
       <%= cl_image_tag user_avatar, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li class= "border-bottom welcome"> Welcome <%= current_user.first_name %></li>
