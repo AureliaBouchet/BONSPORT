@@ -4,7 +4,7 @@
     <h2>My informations</h2>
       <div class="info">
         <% if current_user.photo.file.nil? %>
-          <% user_avatar = 'user.jpg' %>
+          <% user_avatar = 'user' %>
         <% else %>
           <% user_avatar = current_user.photo %>
         <% end %>
@@ -43,7 +43,7 @@
           <div class="img-user">
 
           <% if reservation.playground.user.photo.file.nil? %>
-            <% proprio_avatar = 'user.jpg' %>
+            <% proprio_avatar = 'user' %>
           <% else %>
             <% proprio_avatar = reservation.playground.user.photo %>
           <% end %>
@@ -96,7 +96,7 @@
           <div class="reservation-user">
          <div class="img-user">
           <% if reservation.user.photo.file.nil? %>
-            <% locataire_avatar = 'user.jpg' %>
+            <% locataire_avatar = 'user' %>
           <% else %>
             <% locataire_avatar = reservation.user.photo %>
           <% end %>
