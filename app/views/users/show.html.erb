@@ -87,7 +87,7 @@
           </div>
           <div class="reservation-user">
          <div class="img-user">
-          <% locataire_avatar = reservation.user.photo.file || 'user.jpg' %>
+          <% locataire_avatar = reservation.user.photo || 'user.jpg' %>
           <%= cl_image_tag locataire_avatar, class: "avatar-large" %>
            </div>
 
