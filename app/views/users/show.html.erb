@@ -3,10 +3,11 @@
     <h1>My profile</h1>
     <h2>My informations</h2>
       <div class="info">
-        <span> <%= cl_image_tag current_user.photo, class: "avatar-large" %></span>
-        <span><%= current_user.first_name.capitalize %></span>
-        <span><%= current_user.last_name.capitalize %></span>
-        <span> <%= link_to "edit", edit_user_path(current_user) %> </span>
+        <% user_avatar = current_user.photo.file || 'user.jpg' %>
+        <%= cl_image_tag user_avatar, class: "avatar-large" %>
+        <%= current_user.first_name.capitalize %>
+        <%= current_user.last_name.capitalize %>
+        <%= link_to "edit", edit_user_path(current_user) %>
       </div>
 
       <h2>My account</h2>
@@ -21,10 +22,11 @@
   <div class="row">
       <% Reservation.where(user: current_user).each do |reservation| %>
       <div class="reservation-dash">
-        <div class="reservation-user"
-           <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
-          <span><%= reservation.user.first_name.capitalize %></span>
-          <span><%= reservation.user.last_name.capitalize %></span>
+        <div class="reservation-user">
+          <% proprio_avatar = reservation.user.photo.file || 'user.jpg' %>
+          <%= cl_image_tag proprio_avatar, class: "avatar-large" %>
+          <%= reservation.user.first_name.capitalize %>
+          <%= reservation.user.last_name.capitalize %>
         </div>
         <div class="reservation-date text-center">
           <span> Reservation from : <%= reservation.date_begin %> to : <%= reservation.date_end %></span>

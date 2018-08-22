@@ -7,5 +7,5 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :playgrounds
 
-   mount_uploader :photo, PhotoUploader
+  mount_uploader :photo, PhotoUploader
 end
