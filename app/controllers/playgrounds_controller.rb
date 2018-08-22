@@ -17,8 +17,14 @@ class PlaygroundsController < ApplicationController
   end
 
   def index
-    @playgrounds = Playground.all
+    @playgrounds = Playground.where.not(latitude: nil, longitude: nil)
 
+    @markers = @playgrounds.map do |playground|
+      {
+        lat: playground.latitude,
+        lng: playground.longitude
+      }
+    end
   end
 
   def show
