@@ -16,7 +16,7 @@
                 <h2><%=playground.title%></h2>
                 <p><%=playground.address%></p>
               </div>
-              <a class="card-link"><%= link_to "", playground_path(playground.id) %></a>
+              <%= link_to "", playground_path(playground.id), class: "card-link"%>
             </div>
           </div>
         <% end %>
@@ -48,7 +48,7 @@
                   <h2><%=playground.title%></h2>
                   <p><%=playground.address%></p>
                 </div>
-                <a class="card-link" <%= link_to "", playground_path(playground.id) %></a>
+                <%= link_to "", playground_path(playground.id), class: "card-link"%>
               </div>
             </div>
           <% end %>
