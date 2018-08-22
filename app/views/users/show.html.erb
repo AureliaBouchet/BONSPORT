@@ -16,15 +16,31 @@
       </div>
   </div>
 
+<!-- reservations as a locataire -->
 
   <h2>My reservations</h2>
   <div class="row">
+    <div class="reservation-dash">
+        <div class="reservation-user">
+          <span>Propriétaire</span>
+        </div>
+        <div class="reservation-date text-center">
+          <span> Dates </span>
+        </div>
+        <div class="reservation-status">
+          <p class="status pending">Statut</p>
+        </div>
+      </div>
       <% Reservation.where(user: current_user).each do |reservation| %>
       <div class="reservation-dash">
-        <div class="reservation-user"
-           <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
-          <span><%= reservation.user.first_name.capitalize %></span>
-          <span><%= reservation.user.last_name.capitalize %></span>
+        <div class="reservation-user">
+          <div class="img-user">
+           <%= cl_image_tag reservation.playground.user.photo, class: "avatar-large", crop: :thumb, gravity: :face%>
+           </div>
+          <span><%= reservation.playground.user.first_name.capitalize %></span>
+          <span><%= reservation.playground.user.last_name.capitalize %></span>
+
+
         </div>
         <div class="reservation-date text-center">
           <span> Reservation from : <%= reservation.date_begin %> to : <%= reservation.date_end %></span>
@@ -37,19 +53,69 @@
 
     </div>
 
-  <h2>My playgrounds</h2>
-    <div class="row">
-      <% Playground.where(user:@user).each do |playground| %>
-        <div class="col-xs-12 col-sm-4">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path playground.photo, height: 300, width: 400, crop: :fill %>);">
-            <div class="card-category"><%=playground.category%> <%="-"%> <%=playground.price%> <%="€/h"%></div>
-            <div class="card-description">
-              <h2><%=playground.title%></h2>
-              <p><%=playground.address%></p>
-            </div>
-            <a class="card-link" href="#" ><%= link_to "", playground_path(playground.id) %></a>
+<!-- playgrounds and reservations as a proprietaire -->
+<h2>My playgrounds</h2>
+
+  <% if Playground.where(user:@user) == []%>
+    <p class="msg">You have no playgrounds yet</p>
+  <%else %>
+
+  <div class="row">
+    <div class="reservation-dash">
+      <div class="reservation-playground reservation-user">
+        <span>My playground</span>
+      </div>
+      <div class="reservation-user">
+        <span>Locataire</span>
+      </div>
+      <div class="reservation-date text-center">
+          <span> Dates </span>
+      </div>
+      <div class="reservation-status">
+          <p class="status pending">Statut</p>
+      </div>
+    </div>
+
+    <% Reservation.all.each do |reservation| %>
+      <% if reservation.playground.user == current_user  %>
+        <div class="reservation-dash">
+          <div class="reservation-playground reservation-user">
+            <span><%= reservation.playground.title %></span>
+          </div>
+          <div class="reservation-user">
+         <div class="img-user">
+           <%= cl_image_tag reservation.user.photo, class: "avatar-large", crop: :thumb, gravity: :face%>
+           </div>
+
+            <span><%= reservation.user.first_name.capitalize %></span>
+            <span><%= reservation.user.last_name.capitalize %></span>
+          </div>
+          <div class="reservation-date text-center">
+            <span> Reservation from : <%= reservation.date_begin %> to : <%= reservation.date_end %></span>
+          </div>
+          <div class="reservation-status">
+            <p class="status pending"><%= reservation.status %></p>
           </div>
         </div>
       <% end %>
-    </div>
-</div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <% Playground.where(user:@user).each do |playground| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path playground.photo, height: 300, width: 400, crop: :fill %>);">
+        <div class="card-category"><%=playground.category%> <%="-"%> <%=playground.price%> <%="€/h"%>
+        </div>
+        <div class="card-description">
+          <h2><%=playground.title%></h2>
+          <p><%=playground.address%></p>
+        </div>
+          <a class="card-link" href="#" ><%= link_to "", playground_path(playground.id) %></a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  </div>
+<% end%>
+<%= link_to "add a playground", new_playground_path, class: "btn btn-default" %>

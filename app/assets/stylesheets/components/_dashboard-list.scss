@@ -36,9 +36,24 @@
   justify-content: space-around;
 }
 
+.reservation-user{
+  width: 200px;
+  display: flex;
+  align-items: center;
+}
 .reservation-user span {
   font-size: 13px;
   font-weight: lighter;
   opacity: 0.6;
   margin-top: 5px;
+}
+
+.msg{
+  font-style: italic;
+  color: #686868;
+}
+
+.img-user{
+  width:50px;
+  margin-right: 15px;
 }
