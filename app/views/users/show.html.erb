@@ -1,55 +1,165 @@
-<div class="container dashboard">
-  <div class="profile">
-    <h1>My profile</h1>
-    <h2>My informations</h2>
-      <div class="info">
-        <span> <%= cl_image_tag current_user.photo, class: "avatar-large" %></span>
-        <span><%= current_user.first_name.capitalize %></span>
-        <span><%= current_user.last_name.capitalize %></span>
-        <span> <%= link_to "edit", edit_user_path(current_user) %> </span>
-      </div>
 
-      <h2>My account</h2>
-      <div class="info">
-        <span><%= current_user.email %></span>
-        <span> <%= link_to "edit password", edit_user_password_path %> </span>
-      </div>
-  </div>
+<div class="container">
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profil</a></li>
+    <li role="presentation" class="active"><a href="#resa" aria-controls="resa" role="tab" data-toggle="tab">Mes réservations</a></li>
+    <li role="presentation"><a href="#playgrounds" aria-controls="playgrounds" role="tab" data-toggle="tab">Mes playgrounds</a></li>
+  </ul>
 
 
-  <h2>My reservations</h2>
-  <div class="row">
-      <% Reservation.where(user: current_user).each do |reservation| %>
-      <div class="reservation-dash">
-        <div class="reservation-user"
-           <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
-          <span><%= reservation.user.first_name.capitalize %></span>
-          <span><%= reservation.user.last_name.capitalize %></span>
-        </div>
-        <div class="reservation-date text-center">
-          <span> Reservation from : <%= reservation.date_begin %> to : <%= reservation.date_end %></span>
-        </div>
-        <div class="reservation-status">
-          <p class="status pending"><%= reservation.status %></p>
+ <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane" id="profile">
+<!-- TAB PROFILE -->
+      <div class="profile">
+        <div class="info">
+          <% if current_user.photo.file.nil? %>
+            <% user_avatar = 'user' %>
+          <% else %>
+            <% user_avatar = current_user.photo %>
+          <% end %>
+          <span> <%= cl_image_tag user_avatar, class: "avatar-large" %></span>
+          <span> <%= current_user.first_name.capitalize %></span>
+          <span> <%= current_user.last_name.capitalize %></span>
+          <span><%= current_user.email %></span>
         </div>
       </div>
-      <% end %>
+      <%= link_to "Modifier mon profil", edit_user_path(current_user), class: 'btn btn-default' %>
+
 
     </div>
 
-  <h2>My playgrounds</h2>
+<!-- TAB RESERVATION -->
+  <div role="tabpanel" class="tab-pane active" id="resa">
+
+    <div class="row">
+      <div class="reservation-dash">
+        <div class="reservation-user text-center reservation-status title">
+          <span>Playground</span>
+        </div>
+        <div class="reservation-user text-center reservation-status title">
+          <span>Proprietaire</span>
+        </div>
+
+        <div class="reservation-date text-center reservation-status title">
+          <span> Dates </span>
+        </div>
+
+        <div class="reservation-status reservation-status">
+          <p class="status pending">Statut</p>
+        </div>
+      </div>
+
+      <% Reservation.where(user: current_user).each do |reservation| %>
+      <div class="reservation-dash">
+        <div class="reservation-user">
+        <span><%= reservation.playground.title %></span>
+      </div>
+        <div class="reservation-user">
+          <div class="img-user">
+            <% if reservation.playground.user.photo.file.nil? %>
+              <% proprio_avatar = 'user' %>
+            <% else %>
+              <% proprio_avatar = reservation.playground.user.photo %>
+            <% end %>
+            <span> <%= cl_image_tag proprio_avatar, class: "avatar-large" %></span>
+          </div>
+        </div>
+        <span><%= reservation.playground.user.first_name.capitalize %></span>
+        <span><%= reservation.playground.user.last_name.capitalize %></span>
+        <div class="reservation-date text-center">
+           <span> Reservation du : <%= reservation.date_begin %> au : <%= reservation.date_end %></span>
+        </div>
+        <div class="reservation-status">
+            <p class="status pending"><%= reservation.status %></p>
+        </div>
+    </div>
+    <% end %>
+
+  </div>
+
+</div>
+<!-- TAB RESERVATION -->
+<div role="tabpanel" class="tab-pane" id="playgrounds">
+
+
+  <% if Playground.where(user:@user) == []%>
+    <p class="msg">You have no playgrounds yet</p>
+  <%else %>
+
+    <div class="row">
+      <div class="reservation-dash">
+        <div class="reservation-playground reservation-user reservation-status">
+          <span>Mes playgrounds</span>
+        </div>
+        <div class="reservation-user reservation-status">
+          <span>Locataire</span>
+        </div>
+        <div class="reservation-date text-center reservation-status">
+            <span> Dates </span>
+        </div>
+        <div class="reservation-status">
+            <p class="status pending">Statut</p>
+        </div>
+      </div>
+
+      <% Reservation.all.each do |reservation| %>
+        <% if reservation.playground.user == current_user  %>
+          <div class="reservation-dash">
+            <div class="reservation-playground reservation-user">
+              <span><%= reservation.playground.title %></span>
+            </div>
+            <div class="reservation-user">
+              <div class="img-user">
+                <% if reservation.user.photo.file.nil? %>
+                  <% locataire_avatar = 'user' %>
+                <% else %>
+                  <% locataire_avatar = reservation.user.photo %>
+                <% end %>
+                <%= cl_image_tag locataire_avatar, class: "avatar-large" %>
+              </div>
+              <span><%= reservation.user.first_name.capitalize %></span>
+              <span> </span>
+              <span><%= reservation.user.last_name.capitalize %></span>
+            </div>
+            <div class="reservation-date text-center">
+              <span> Reservation du : <%= reservation.date_begin %> au : <%= reservation.date_end %></span>
+            </div>
+            <div class="reservation-status">
+              <p class="status pending"><%= reservation.status %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+
     <div class="row">
       <% Playground.where(user:@user).each do |playground| %>
         <div class="col-xs-12 col-sm-4">
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path playground.photo, height: 300, width: 400, crop: :fill %>);">
-            <div class="card-category"><%=playground.category%> <%="-"%> <%=playground.price%> <%="€/h"%></div>
-            <div class="card-description">
-              <h2><%=playground.title%></h2>
-              <p><%=playground.address%></p>
-            </div>
+          <div class="card-category"><%=playground.category%> <%="-"%> <%=playground.price%> <%="€/h"%>
+          </div>
+          <div class="card-description">
+            <h2><%=playground.title%></h2>
+            <p><%=playground.address%></p>
+          </div>
             <a class="card-link" href="#" ><%= link_to "", playground_path(playground.id) %></a>
           </div>
         </div>
       <% end %>
     </div>
+
+<% end%>
+<%= link_to "add a playground", new_playground_path, class: "btn btn-default" %>
+
+    </div>
+
+  </div>
+
+</div>
+
 </div>

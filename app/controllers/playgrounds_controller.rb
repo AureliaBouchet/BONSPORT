@@ -1,4 +1,6 @@
 class PlaygroundsController < ApplicationController
+    skip_before_action :authenticate_user!, only: [:index]
+
   def new
     @playground = Playground.new
   end
@@ -8,7 +10,7 @@ class PlaygroundsController < ApplicationController
     @playground = Playground.new(playground_params)
     @playground.user = @user
     if @playground.save
-      redirect_to root_path
+      redirect_to playgrounds_path
     else
       render :new
     end

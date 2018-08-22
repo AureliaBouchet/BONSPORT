@@ -1,7 +1,3 @@
-# require_relative 'config/environment'
-
-# run Rails.application
-
 puts 'cleaning database...'
 Playground.destroy_all
 
