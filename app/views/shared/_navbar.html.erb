@@ -14,7 +14,7 @@
 
   <div class="navbar-wagon-right hidden-xs hidden-sm">
      <%= link_to playgrounds_path, class: "navbar-wagon-item navbar-wagon-link" do %>
-          <i class="fas fa-search"></i> Search a playground
+          <i class="fas fa-search"></i> Trouver un playground
           <% end %>
 
 
@@ -31,9 +31,9 @@
 
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li class= "border-bottom welcome"> Welcome <%= current_user.first_name %></li>
-            <li><%= link_to "My profile", user_path(current_user) %></li>
-            <li><%= link_to "My reservations", user_path(current_user) %></li>
-            <li><%= link_to "My playgrounds", user_path(current_user) %></li>
+            <li><%= link_to "Mon profil", user_path(current_user) %></li>
+            <li><%= link_to "Mes réservations", user_path(current_user) %></li>
+            <li><%= link_to "Mes playgrounds", user_path(current_user) %></li>
             <li> <%= link_to destroy_user_session_path, method: :delete do %>
                   <i class="fas fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %>
                 <% end %>
@@ -57,12 +57,12 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li class= "border-bottom welcome"> Welcome <%= current_user.first_name %></li>
         <li> <%= link_to playgrounds_path, class: "border-bottom" do %>
-          <i class="fas fa-search"></i> Search playground
+          <i class="fas fa-search"></i> Trouver un playground
           <% end %>
         </li>
-        <li><%= link_to "My profile", user_path(current_user) %></li>
-        <li><%= link_to "My reservations", user_path(current_user) %></li>
-        <li><%= link_to "My playgrounds", user_path(current_user) %></li>
+        <li><%= link_to "Mon profil", user_path(current_user) %></li>
+        <li><%= link_to "Mes réservations", user_path(current_user) %></li>
+        <li><%= link_to "Mes playgrounds", user_path(current_user) %></li>
          <li><%= link_to destroy_user_session_path, method: :delete do %>
                   <i class="fas fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %>
                 <% end %>
