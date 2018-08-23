@@ -17,10 +17,32 @@
 }
 
 .reservation-status {
+  // width: 200px;
   font-size: 14px;
   font-weight: bold;
 }
+.reservation-user{
+  width: 200px;
+  display: flex;
+  align-items: center;
+}
 
+.reservation-user p {
+  font-size: 13px;
+  font-weight: lighter;
+  opacity: 0.6;
+  margin: 5px;
+}
+
+.pending {
+  color:orange;
+}
+.confirm {
+  color:green
+}
+.decline{
+  color:red;
+}
 .avatar-large {
   width: 50px;
   height: 50px;
@@ -38,18 +60,6 @@
   margin: 40px;
 }
 
-.reservation-user{
-  width: 200px;
-  display: flex;
-  align-items: center;
-}
-
-.reservation-user span {
-  font-size: 13px;
-  font-weight: lighter;
-  opacity: 0.6;
-  margin: 5px;
-}
 
 .msg{
   font-style: italic;
@@ -62,4 +72,5 @@
 }
 .title{
     font-weight: bold;
+    font-size:16px;
 }
