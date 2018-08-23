@@ -3,11 +3,11 @@
 <div>
 
   <!-- Nav tabs -->
-  <ul class="nav nav-tabs tab-general" role="tablist">
+  <ul class="nav nav-tabs tab-general tab-color" role="tablist">
     <% if @page == "profile" %>
-      <li role="presentation" class="active" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profil</a></li>
+      <li role="presentation" class="active" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Mon profil</a></li>
     <% else %>
-      <li role="presentation" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profil</a></li>
+      <li role="presentation" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Mon profil</a></li>
     <% end %>
 
     <% if @page == "resa" %>
@@ -206,7 +206,7 @@
     </div>
   <% end%>
 
-  <%= link_to "add a playground", new_playground_path, class: "btn btn-default" %>
+  <%= link_to "Ajouter un playground", new_playground_path, class: "btn" %>
 
 </div>
 
