@@ -3,7 +3,7 @@
 <div>
 
   <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
+  <ul class="nav nav-tabs tab-general" role="tablist">
     <li role="presentation" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profil</a></li>
     <li role="presentation" class="active"><a href="#resa" aria-controls="resa" role="tab" data-toggle="tab">Mes réservations</a></li>
     <li role="presentation"><a href="#playgrounds" aria-controls="playgrounds" role="tab" data-toggle="tab">Mes playgrounds</a></li>
@@ -21,42 +21,40 @@
           <% else %>
             <% user_avatar = current_user.photo %>
           <% end %>
-          <span> <%= cl_image_tag user_avatar, class: "avatar-large" %></span>
-          <span> <%= current_user.first_name.capitalize %></span>
-          <span> <%= current_user.last_name.capitalize %></span>
-          <span><%= current_user.email %></span>
+          <p> <%= cl_image_tag user_avatar, class: "avatar-large" %></p>
+          <p> <%= current_user.first_name.capitalize %></p>
+          <p> <%= current_user.last_name.capitalize %></p>
+          <p> <%= current_user.email %></p>
         </div>
       </div>
       <%= link_to "Modifier mon profil", edit_user_path(current_user), class: 'btn btn-default' %>
-
-
     </div>
 
 <!-- TAB RESERVATION -->
-  <div role="tabpanel" class="tab-pane active" id="resa">
+    <div role="tabpanel" class="tab-pane active" id="resa">
 
-    <div class="row">
+      <div class="row">
       <div class="reservation-dash">
-        <div class="reservation-user text-center reservation-status title">
-          <span>Playground</span>
+        <div class="reservation-user text-center title">
+          <h2>Playground</h2>
         </div>
-        <div class="reservation-user text-center reservation-status title">
-          <span>Proprietaire</span>
-        </div>
-
-        <div class="reservation-date text-center reservation-status title">
-          <span> Dates </span>
+        <div class="reservation-user text-center title">
+          <h2>Proprietaire</h2>
         </div>
 
-        <div class="reservation-status reservation-status">
-          <p class="status pending">Statut</p>
+        <div class="reservation-date text-center  title">
+          <h2> Dates </h2>
+        </div>
+
+        <div class="reservation-status text-center  title">
+          <h2>Statut</h2>
         </div>
       </div>
 
       <% Reservation.where(user: current_user).each do |reservation| %>
       <div class="reservation-dash">
         <div class="reservation-user">
-        <span><%= reservation.playground.title %></span>
+        <p><%= reservation.playground.title %></p>
       </div>
         <div class="reservation-user">
           <div class="img-user">
@@ -65,13 +63,13 @@
             <% else %>
               <% proprio_avatar = reservation.playground.user.photo %>
             <% end %>
-            <span> <%= cl_image_tag proprio_avatar, class: "avatar-large" %></span>
+            <p> <%= cl_image_tag proprio_avatar, class: "avatar-large" %></p>
           </div>
+        <p><%= reservation.playground.user.first_name.capitalize %></p>
+        <p><%= reservation.playground.user.last_name.capitalize %></p>
         </div>
-        <span><%= reservation.playground.user.first_name.capitalize %></span>
-        <span><%= reservation.playground.user.last_name.capitalize %></span>
         <div class="reservation-date text-center">
-           <span> Reservation du : <%= reservation.date_begin %> au : <%= reservation.date_end %></span>
+           <p> Reservation du : <%= reservation.date_begin %> au : <%= reservation.date_end %></p>
         </div>
         <div class="reservation-status">
             <p class="status pending"><%= reservation.status %></p>
@@ -82,7 +80,7 @@
   </div>
 
 </div>
-<!-- TAB RESERVATION -->
+<!-- TAB PLAYGROUND -->
 <div role="tabpanel" class="tab-pane" id="playgrounds">
 
 
@@ -90,19 +88,20 @@
     <p class="msg">You have no playgrounds yet</p>
   <%else %>
 
+<h2> Réservations de mes playgrounds en cours : </h2>
     <div class="row">
       <div class="reservation-dash">
-        <div class="reservation-playground reservation-user reservation-status">
-          <span>Mes playgrounds</span>
+        <div class="reservation-playground reservation-user text-center title">
+          <h2>Playgrounds</h2>
         </div>
-        <div class="reservation-user reservation-status">
-          <span>Locataire</span>
+        <div class="reservation-user text-center title">
+          <h2>Locataire</h2>
         </div>
-        <div class="reservation-date text-center reservation-status">
-            <span> Dates </span>
+        <div class="reservation-date text-center title">
+            <h2> Dates </h2>
         </div>
-        <div class="reservation-status">
-            <p class="status pending">Statut</p>
+        <div class="reservation-status text-center title">
+            <h2>Validation</h2>
         </div>
       </div>
 
@@ -110,7 +109,7 @@
         <% if reservation.playground.user == current_user  %>
           <div class="reservation-dash">
             <div class="reservation-playground reservation-user">
-              <span><%= reservation.playground.title %></span>
+              <p><%= reservation.playground.title %></p>
             </div>
             <div class="reservation-user">
               <div class="img-user">
@@ -121,21 +120,22 @@
                 <% end %>
                 <%= cl_image_tag locataire_avatar, class: "avatar-large" %>
               </div>
-              <span><%= reservation.user.first_name.capitalize %></span>
-              <span> </span>
-              <span><%= reservation.user.last_name.capitalize %></span>
+              <p><%= reservation.user.first_name.capitalize %></p>
+              <p><%= reservation.user.last_name.capitalize %></p>
             </div>
             <div class="reservation-date text-center">
-              <span> Reservation du : <%= reservation.date_begin %> au : <%= reservation.date_end %></span>
+              <p> Reservation du : <%= reservation.date_begin %> au : <%= reservation.date_end %></p>
             </div>
             <div class="reservation-status">
-              <p class="status pending"><%= reservation.status %></p>
+              <button>Confirmer</button>
+              <button>Refuser</button>
             </div>
           </div>
         <% end %>
-      </div>
       <% end %>
     </div>
+
+    <h2> Accéder à mes playgrounds  </h2>
 
     <div class="row">
       <% Playground.where(user:@user).each do |playground| %>
@@ -152,14 +152,13 @@
         </div>
       <% end %>
     </div>
+  <% end%>
 
-<% end%>
-<%= link_to "add a playground", new_playground_path, class: "btn btn-default" %>
-
-    </div>
-
-  </div>
+  <%= link_to "add a playground", new_playground_path, class: "btn btn-default" %>
 
 </div>
 
+
+<!-- fin des tabs   -->
+</div>
 </div>

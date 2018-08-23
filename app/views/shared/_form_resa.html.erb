@@ -1,5 +1,5 @@
 
-    <div>
+    <div class= "form-container">
       <%= simple_form_for [@playground, @reservation] do |r| %>
       <%= r.input :date_begin, order: [:day, :month, :year], label: 'Début' %>
       <%= r.input :date_end, order: [:day, :month, :year], label: 'Fin' %>
