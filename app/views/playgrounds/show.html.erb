@@ -1,46 +1,52 @@
-<div class="show-general">
+<!-- BANNER -->
 
-  <h1><%= @playground.title %></h1>
-    <div class="show-playground-calendar" style="display: flex">
-      <div class="show-playground">
-        <div class="show" style="background-image: url('<%= cl_image_path @playground.photo, crop: :fill %>')">
-        </div>
-        <div>
-          <p>Le propriétaire :</p>
-            <div class="img-user-show text-center">
-              <% if @playground.user.photo.file.nil? %>
-                <% proprio_avatar = 'user' %>
-              <% else %>
-                <% proprio_avatar = @playground.user.photo %>
-              <% end %>
-              <%= cl_image_tag proprio_avatar, class: "avatar-large" %>
-            </div>
-            <%= @playground.user.first_name.capitalize %>
-            <%= @playground.user.last_name.capitalize %>
-        </div>
-        <!--  -->
-        <div class="show-category"><%= @playground.category %></div>
-        <!--  -->
-        <div class="show-price"><%= @playground.price %> €/h</div>
-        <!--  -->
-        <div class="show-address"><%= @playground.address %></div>
-        <!--  -->
-        <div class="show-description"> <%= @playground.description %> </div>
-      </div>
-      <%= simple_form_for [@playground, @reservation] do |f| %>
-        <div class="form-inputs" style="width: 300px">
-           <%= f.input :date_begin, as: :string, required: false, label: "Du :" %>
-           <%= f.input :date_end, as: :string, required: false, label: "Au :" %>
-        </div>
-        <div class="form-actions">
-          <%= f.submit "Réserver", class: "main-button" %>
-        </div>
-      <% end %>
+<div class="small-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @playground.photo, crop: :fill %>')">
+  <div class="card-category "><%= @playground.category %></div>
+  <div class="card-description ">
+    <h1>  <%= @playground.title %></h1>
+    <h2> <%= @playground.address %></h2>
+  </div>
+  <div class="img-user-show text-center">
+    <% if @playground.user.photo.file.nil? %>
+      <% proprio_avatar = 'user' %>
+    <% else %>
+      <% proprio_avatar = @playground.user.photo %>
+    <% end %>
+    <%= cl_image_tag proprio_avatar, class: "avatar-large" %>
+  </div>
+</div>
+
+<!-- CONTENT -->
+
+
+<div class="show-content border">
+
+  <div class="show-playground">
+    <div class="show-description"> <%= @playground.description %>
+    <div class="show-price">Prix:
+      <%= @playground.price %> €/h
     </div>
+    </div>
+    <%= link_to "Retour à la liste", playgrounds_path, class: "btn" %>
+  </div>
 
-  <%= link_to "Retour à la liste", playgrounds_path, class: "btn btn-default" %>
-  <%= link_to "Réserver", new_playground_reservation_path(@playground), class: "btn btn-default" %>
+
+  <div class="show-calendar">
+    <h2>Réservez</h2>
+    <%= simple_form_for [@playground, @reservation] do |f| %>
+      <div class="form-inputs" >
+        <%= f.input :date_begin, as: :string, required: false, label: "Du :" %>
+        <%= f.input :date_end, as: :string, required: false, label: "Au :" %>
+      </div>
+      <div class="form-actions">
+        <%= f.submit "Réserver", class: "main-button btn" %>
+      </div>
+    <% end %>
+  </div>
 
 </div>
+
+
+
 
 

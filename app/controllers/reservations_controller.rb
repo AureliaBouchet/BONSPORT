@@ -16,9 +16,9 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to user_path(current_user, page: "resa")
       flash[:notice] = "Votre demande de réservation a été créée, le propriétaire va vous répondre au plus vite."
-
     else
-      render "reservations/new"
+      render 'playgrounds/show'
+
     end
   end
 
