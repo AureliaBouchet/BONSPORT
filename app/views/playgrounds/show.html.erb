@@ -3,7 +3,21 @@
 
 <div class="show" style="background-image: url('<%= cl_image_path @playground.photo, crop: :fill %>')">
 </div>
+
+<p>Le propriétaire :</p>
+<div class="img-user-show text-center">
+  <% if @playground.user.photo.file.nil? %>
+    <% proprio_avatar = 'user' %>
+  <% else %>
+    <% proprio_avatar = @playground.user.photo %>
+  <% end %>
+    <%= cl_image_tag proprio_avatar, class: "avatar-large" %>
+  </div>
+  <%= @playground.user.first_name.capitalize %>
+  <%= @playground.user.last_name.capitalize %>
+</div>
 <!--  -->
+
 
 <div class="show-category"><%= @playground.category %></div>
 <!--  -->
@@ -19,8 +33,13 @@
 <!-- <img class="show-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
 <!-- <a class="show-link" href="#" ></a>
  -->
+
+<h1>Réserver maintenant!</h1>
+<%= render 'shared/form_resa', reservation: @reservation %>
+
+
+
 <%= link_to "Retour à la liste", playgrounds_path, class: "btn btn-default" %>
-<%= link_to "Réserver", new_playground_reservation_path(@playground), class: "btn btn-default" %>
 
 </div>
 
