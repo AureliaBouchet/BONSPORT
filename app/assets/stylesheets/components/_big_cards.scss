@@ -1,6 +1,6 @@
 h1 {
-text-align: center;
-padding-top: 30px;
+  text-align: center;
+  padding-top: 30px;
 }
 
 .show-general{
@@ -99,8 +99,15 @@ padding-top: 30px;
 }
 
 .img-user-show {
-display: flex;
-align-items: center;
-justify-content: space-around;
-margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.resa-embeded {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }

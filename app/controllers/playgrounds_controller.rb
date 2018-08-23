@@ -12,6 +12,7 @@ class PlaygroundsController < ApplicationController
     if @playground.save
       redirect_to playgrounds_path
     else
+      flash[:alert] = "Vous devez remplir les champs obligatoires"
       render :new
     end
   end
