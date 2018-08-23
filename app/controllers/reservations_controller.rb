@@ -14,7 +14,7 @@ class ReservationsController < ApplicationController
     @reservation.user = current_user
 
     if @reservation.save
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user, page: "resa")
     else
       render "reservations/new"
     end
@@ -23,7 +23,7 @@ class ReservationsController < ApplicationController
   def update
     @reservation = Reservation.find(params[:id])
     @reservation.update(reservation_params)
-    redirect_to user_path(current_user)
+    redirect_to user_path(current_user, page: "playground")
 
   end
 
