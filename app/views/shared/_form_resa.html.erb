@@ -3,6 +3,6 @@
       <%= simple_form_for [@playground, @reservation] do |r| %>
       <%= r.input :date_begin, order: [:day, :month, :year], label: 'Début' %>
       <%= r.input :date_end, order: [:day, :month, :year], label: 'Fin' %>
-      <%= r.submit "Lancer la réservation", class: "btn btn-default" %>
+      <%= r.submit "Lancer la réservation", class: "btn btn-primary" %>
       <% end %>
     </div>

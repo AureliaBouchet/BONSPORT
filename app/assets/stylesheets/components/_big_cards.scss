@@ -1,14 +1,12 @@
 h1 {
 text-align: center;
 padding-top: 30px;
-padding-bottom: 50px;
 }
 
 .show-general{
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: 20px;
   background-color: #bdcebe;
 }
 .show {
@@ -18,7 +16,7 @@ padding-bottom: 50px;
   background-position: center;
   color: white;
   position: relative;
-  margin: 10px 10px;
+  margin: 50px 50px;
 }
 .show-user {
   position: absolute;
@@ -34,6 +32,7 @@ padding-bottom: 50px;
   left: 20px;
   font-size: 15px;
   text-transform: uppercase;
+  margin-top: 50px;
 }
 
 .show-price {
@@ -68,7 +67,7 @@ padding-bottom: 50px;
   left: 10px;
   padding-left: 200px;
   padding-right: 200px;
-  padding-bottom: 100px;
+  padding-bottom: 50px;
 }
 
 .show-link {
@@ -97,4 +96,11 @@ padding-bottom: 50px;
     margin-bottom: 20px;
     font-size: 16px;
     width: 200px;
+}
+
+.img-user-show {
+display: flex;
+align-items: center;
+justify-content: space-around;
+margin-bottom: 30px;
 }

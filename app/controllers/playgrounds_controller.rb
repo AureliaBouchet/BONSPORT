@@ -33,6 +33,7 @@ class PlaygroundsController < ApplicationController
 
   def show
     @playground = Playground.find(params[:id])
+    @reservation = Reservation.new
   end
 
   def edit
