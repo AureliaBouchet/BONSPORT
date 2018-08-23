@@ -12,6 +12,7 @@ class PlaygroundsController < ApplicationController
     if @playground.save
       redirect_to playgrounds_path
     else
+      flash[:alert] = "Vous devez remplir les champs obligatoires"
       render :new
     end
   end
@@ -43,13 +44,13 @@ class PlaygroundsController < ApplicationController
   def update
     @playground = Playground.find(params[:id])
     @playground.update(playground_params)
-    redirect_to user_path(current_user)
+    redirect_to user_path(current_user, page: "playground")
   end
 
   def destroy
     @playground = Playground.find(params[:id])
     @playground.destroy
-    redirect_to user_path(current_user)
+    redirect_to user_path(current_user, page: "playground")
   end
 
 

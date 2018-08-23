@@ -4,15 +4,36 @@
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs tab-general" role="tablist">
-    <li role="presentation" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profil</a></li>
-    <li role="presentation" class="active"><a href="#resa" aria-controls="resa" role="tab" data-toggle="tab">Mes réservations</a></li>
-    <li role="presentation"><a href="#playgrounds" aria-controls="playgrounds" role="tab" data-toggle="tab">Mes playgrounds</a></li>
+    <% if @page == "profile" %>
+      <li role="presentation" class="active" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profil</a></li>
+    <% else %>
+      <li role="presentation" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profil</a></li>
+    <% end %>
+
+    <% if @page == "resa" %>
+      <li role="presentation" class="active"><a href="#resa" aria-controls="resa" role="tab" data-toggle="tab">Mes réservations</a></li>
+    <% else %>
+      <li role="presentation"><a href="#resa" aria-controls="resa" role="tab" data-toggle="tab">Mes réservations</a></li>
+    <% end %>
+
+    <% if @page == "playground" %>
+      <li role="presentation" class="active"><a href="#playgrounds" aria-controls="playgrounds" role="tab" data-toggle="tab">Mes playgrounds</a></li>
+    <% else %>
+      <li role="presentation"><a href="#playgrounds" aria-controls="playgrounds" role="tab" data-toggle="tab">Mes playgrounds</a></li>
+    <% end %>
+
   </ul>
+
 
 
  <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane" id="profile">
+
+<% if @page == "profile" %>
+      <div role="tabpanel" class="tab-pane active" id="profile">
+<% else %>
+      <div role="tabpanel" class="tab-pane" id="profile">
+<% end %>
 <!-- TAB PROFILE -->
       <div class="profile">
         <div class="info">
@@ -31,8 +52,11 @@
     </div>
 
 <!-- TAB RESERVATION -->
+<% if @page == "resa" %>
     <div role="tabpanel" class="tab-pane active" id="resa">
-
+<% else %>
+    <div role="tabpanel" class="tab-pane" id="resa">
+<% end %>
       <div class="row">
       <div class="reservation-dash">
         <div class="reservation-user text-center title">
@@ -81,7 +105,11 @@
 
 </div>
 <!-- TAB PLAYGROUND -->
+<% if @page == "playground"  %>
+<div role="tabpanel" class="tab-pane active" id="playgrounds">
+<% else %>
 <div role="tabpanel" class="tab-pane" id="playgrounds">
+<% end %>
 
 
   <% if Playground.where(user:@user) == []%>
@@ -126,9 +154,22 @@
             <div class="reservation-date text-center">
               <p> Reservation du : <%= reservation.date_begin %> au : <%= reservation.date_end %></p>
             </div>
-            <div class="reservation-status">
-              <button>Confirmer</button>
-              <button>Refuser</button>
+            <div class="reservation-status text-center">
+
+              <%= simple_form_for reservation do |f| %>
+                <%if reservation.status == 'En attente' %>
+                  <%= f.input_field :status,  as: :radio_buttons, collection: ['Validé', 'Refusé'], label: false %>
+                  <%= f.submit "Modifier statut", class: "btn btn-default" %>
+                <% else %>
+                  <%if reservation.status == 'Validé' %>
+                  <i class="fas fa-check-circle confirm"></i>
+                  <% else %>
+                  <i class="fas fa-times-circle decline"></i>
+                  <% end %>
+                <% end %>
+                  <p class="msg-status ">Vous avez <%= reservation.status.downcase %> la réservation</p>
+              <% end %>
+
             </div>
           </div>
         <% end %>

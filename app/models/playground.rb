@@ -2,6 +2,13 @@ class Playground < ApplicationRecord
   belongs_to :user
   has_many :reservations
   has_many :reviews, dependent: :destroy
+  validates :photo, presence: true
+  validates :price, presence: true
+  validates :address, presence: true
+  validates :description, presence: true
+  validates :category, presence: true
+  validates :title, presence:true
+
 
   mount_uploader :photo, PhotoUploader
 
