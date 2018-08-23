@@ -1,4 +1,4 @@
-puts 'cleaning database...'
+rails puts 'cleaning database...'
 Playground.destroy_all
 
 
