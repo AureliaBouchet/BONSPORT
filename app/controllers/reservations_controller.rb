@@ -15,6 +15,7 @@ class ReservationsController < ApplicationController
 
     if @reservation.save
       redirect_to user_path(current_user)
+      flash[:notice] = "Votre demande de réservation a été créée, le propriétaire va vous répondre au plus vite."
     else
       render "reservations/new"
     end
@@ -24,7 +25,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     @reservation.update(reservation_params)
     redirect_to user_path(current_user)
-
+    flash[:notice] = "Votre demande a bien été prise en compte!"
   end
 
 
