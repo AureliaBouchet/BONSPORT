@@ -58,6 +58,9 @@
     <div role="tabpanel" class="tab-pane" id="resa">
 <% end %>
       <div class="row">
+      <% if Reservation.where(user: current_user) == []%>
+        <p class="msg">Vous n'avez pas encore de réservation</p>
+      <%else %>
       <div class="reservation-dash">
         <div class="reservation-user text-center title">
           <h2>Playground</h2>
@@ -75,35 +78,37 @@
         </div>
       </div>
 
-      <% Reservation.where(user: current_user).each do |reservation| %>
-      <div class="reservation-dash">
-        <div class="reservation-user">
-        <p><%= reservation.playground.title %></p>
-      </div>
-        <div class="reservation-user">
-          <div class="img-user">
-            <% if reservation.playground.user.photo.file.nil? %>
-              <% proprio_avatar = 'user' %>
-            <% else %>
-              <% proprio_avatar = reservation.playground.user.photo %>
-            <% end %>
-            <p> <%= cl_image_tag proprio_avatar, class: "avatar-large" %></p>
-          </div>
-        <p><%= reservation.playground.user.first_name.capitalize %></p>
-        <p><%= reservation.playground.user.last_name.capitalize %></p>
-        </div>
-        <div class="reservation-date text-center">
-           <p> Reservation du : <%= reservation.date_begin %> au : <%= reservation.date_end %></p>
-        </div>
-        <div class="reservation-status">
-            <p class="status pending"><%= reservation.status %></p>
-        </div>
-    </div>
-    <% end %>
 
+        <% Reservation.where(user: current_user).each do |reservation| %>
+        <div class="reservation-dash">
+          <div class="reservation-user">
+            <p><%= reservation.playground.title %></p>
+          </div>
+          <div class="reservation-user">
+            <div class="img-user">
+              <% if reservation.playground.user.photo.file.nil? %>
+                <% proprio_avatar = 'user' %>
+              <% else %>
+                <% proprio_avatar = reservation.playground.user.photo %>
+              <% end %>
+              <p> <%= cl_image_tag proprio_avatar, class: "avatar-large" %></p>
+            </div>
+            <p><%= reservation.playground.user.first_name.capitalize %></p>
+            <p><%= reservation.playground.user.last_name.capitalize %></p>
+          </div>
+          <div class="reservation-date text-center">
+            <p> Reservation du : <%= reservation.date_begin %> au : <%= reservation.date_end %></p>
+          </div>
+          <div class="reservation-status">
+            <p class="status pending"><%= reservation.status %></p>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
   </div>
 
 </div>
+
 <!-- TAB PLAYGROUND -->
 <% if @page == "playground"  %>
 <div role="tabpanel" class="tab-pane active" id="playgrounds">
@@ -113,7 +118,7 @@
 
 
   <% if Playground.where(user:@user) == []%>
-    <p class="msg">You have no playgrounds yet</p>
+    <p class="msg">Vous n'avez pas encore ajouté de playground</p>
   <%else %>
 
 <h2> Réservations de mes playgrounds en cours : </h2>
