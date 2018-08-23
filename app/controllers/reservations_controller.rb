@@ -6,6 +6,8 @@ class ReservationsController < ApplicationController
   end
 
   def create
+
+
     @reservation = Reservation.new(reservation_params)
     @playground = Playground.find(params[:playground_id])
     @reservation.playground = @playground
