@@ -18,9 +18,17 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def update
+    @reservation = Reservation.find(params[:id])
+    @reservation.update(reservation_params)
+    redirect_to user_path(current_user)
+
+  end
+
+
   private
 
   def reservation_params
-    params.require(:reservation).permit(:date_begin, :date_end)
+    params.require(:reservation).permit(:date_begin, :date_end, :status)
   end
 end
