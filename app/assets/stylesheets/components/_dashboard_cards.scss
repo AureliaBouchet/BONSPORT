@@ -1,0 +1,19 @@
+.links-on-card a {
+  color:white;
+  text-decoration: none !important;
+
+}
+
+.card-dash:hover {
+  opacity: 0.9;
+}
+
+.card-dash {
+  position: relative;
+}
+
+.position-card{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
