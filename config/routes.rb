@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   resources :reservations, only: [:show, :update]
   resources :users, only: [:show, :update, :edit]
 
+  resources :users, only: [:show] do
+    resources :reservations, only: [:update]
+  end
 
 end
