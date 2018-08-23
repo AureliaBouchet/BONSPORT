@@ -3,11 +3,10 @@ h1 {
   padding-top: 30px;
 }
 
-.show-general{
+.show-content{
   display: flex;
-  flex-direction: column;
   text-align: center;
-  background-color: #bdcebe;
+
 }
 .show {
   height: 300px;
@@ -19,27 +18,21 @@ h1 {
   margin: 50px 50px;
 }
 .show-user {
-  position: absolute;
-  right: 10px;
-  top: 10px;
+
   width: 40px;
   border-radius: 50%;
 }
 .show-category {
-  position: relative;
+
   text-align: center;
-  top: 20px;
-  left: 20px;
+
   font-size: 15px;
   text-transform: uppercase;
   margin-top: 50px;
 }
 
 .show-price {
-  position: relative;
   text-align: center;
-  top: 20px;
-  left: 20px;
   font-size: 15px;
   text-transform: uppercase;
   padding-top: 10px;
@@ -47,10 +40,7 @@ h1 {
 }
 
 .show-address {
-  position: relative;
   text-align: center;
-  top: 20px;
-  left: 20px;
   font-size: 20px;
   font-style: bold;
   text-transform: uppercase;
@@ -59,15 +49,10 @@ h1 {
 }
 
 .show-description {
-  position: relative;
-  text-align: center;
+  text-align: justify;
   font-style: italic;
-  top: 20px;
-  bottom: 10px;
-  left: 10px;
-  padding-left: 200px;
-  padding-right: 200px;
-  padding-bottom: 50px;
+  font-size: 14px;
+  padding: 30px 15px 15px 15px;
 }
 
 .show-link {
@@ -85,9 +70,9 @@ h1 {
 }
 
 .btn {
-    background-color: white; /* Green */
+    background-color: rgba(189,113,66,0.7); /* Green */
     border: none;
-    color: black;
+    color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -96,18 +81,32 @@ h1 {
     margin-bottom: 20px;
     font-size: 16px;
     width: 200px;
+  &:hover{
+background-color: rgb(189,113,66);
+color:white;
+  }
 }
 
-.img-user-show {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 30px;
-}
+
 
 .resa-embeded {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+}
+
+.border{
+  border:solid 1px black;
+}
+
+.show-playground{
+  width:67vw;
+}
+.show-calendar{
+  width:33vw;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

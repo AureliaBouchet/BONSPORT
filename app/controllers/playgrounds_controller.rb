@@ -10,7 +10,7 @@ class PlaygroundsController < ApplicationController
     @playground = Playground.new(playground_params)
     @playground.user = @user
     if @playground.save
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user, page: "playground")
       flash[:notice] = "La nouvelle création a été effectuée"
     else
       flash[:alert] = "Vous devez remplir les champs obligatoires"

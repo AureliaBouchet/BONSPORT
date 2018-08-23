@@ -8,7 +8,7 @@
   background-position: center;
   color: white;
   position: relative;
-  margin: 10px 10px;
+  margin: 5px 5px;
 }
 .card-user {
   position: absolute;
@@ -54,4 +54,11 @@
   height: 300;
   width: 400;
   color: white;
+}
+.card-padding{
+  padding:0px;
+}
+
+.card-description h1{
+  font-size:50px;
 }
