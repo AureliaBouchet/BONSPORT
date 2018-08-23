@@ -27,12 +27,12 @@
       <%= @playground.price %> €/h
     </div>
     </div>
-    <%= link_to "Retour à la liste", playgrounds_path, class: "btn" %>
+    <%= link_to "Retourner à la liste", playgrounds_path, class: "btn" %>
   </div>
 
 
   <div class="show-calendar">
-    <h2>Réservez</h2>
+    <h2>Votre réservation</h2>
     <%= simple_form_for [@playground, @reservation] do |f| %>
       <div class="form-inputs" >
         <%= f.input :date_begin, as: :string, required: false, label: "Du :" %>
