@@ -1,8 +1,15 @@
 <div class="container">
-  <form action="/playgrounds" style="width: 100%; height: 50px; margin-top: 25px; margin-bottom: 15px; text-align: center; padding: 0px;" method="get">
-    <input type="text" placeholder="Quel est votre terrain de jeu ?" style= "width: 50%; font-size: 18px; font-style: italic; height: 100%; border: 1px; padding: 5px;">
-    <input type="submit", value="Go!" class="btn-default" style= "width: 10%; font-size: 18px; height: 100%; border: 1px;">
-  </form>
+  <!-- <form action="/playgrounds" style="width: 100%; height: 50px; margin-top: 25px; margin-bottom: 15px; text-align: center; padding: 0px;" method="get"> -->
+    <!-- <input type="text" placeholder="Quel est votre terrain de jeu ?" style= "width: 50%; font-size: 18px; font-style: italic; height: 100%; border: 1px; padding: 5px;"> -->
+<!--   <div class="global-search" style="display: flex">
+ -->    <%= form_tag playgrounds_path, class: "new-search-bar", method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Indiquez la catégorie de playground, le lieu"%>
+    <%= submit_tag value="Go!", class: "btn-default" %>
+    <% end %>
+ <!--  </div> -->
 
 
   <div class="hidden-xs flex">

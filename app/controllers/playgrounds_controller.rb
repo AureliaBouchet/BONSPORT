@@ -17,14 +17,18 @@ class PlaygroundsController < ApplicationController
   end
 
   def index
-    @playgrounds = Playground.where.not(latitude: nil, longitude: nil)
-
-    @markers = @playgrounds.map do |playground|
-      {
-        lat: playground.latitude,
-        lng: playground.longitude
-      }
+    if params[:query].present?
+      @playgrounds = Playground.search_by_category_and_address(params[:query])
+    else
+      @playgrounds = Playground.where.not(latitude: nil, longitude: nil)
     end
+
+      @markers = @playgrounds.map do |playground|
+        {
+          lat: playground.latitude,
+          lng: playground.longitude
+        }
+      end
   end
 
   def show
