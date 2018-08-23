@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6">
+      <h1>Modifier mon playground</h1>
+      <div class="show" style="background-image: url('<%= cl_image_path @playground.photo, crop: :fill %>')">
+      </div>
+
+      <div class="form">
+        <%= simple_form_for @playground do |f| %>
+          <%= f.input :title %>
+          <%= f.input :description %>
+          <%= f.input :category %>
+          <%= f.input :address %>
+          <%= f.input :price %>
+          <%= f.input :photo %>
+
+          <%= f.submit "Modifier", class: "btn btn-default" %>
+        <% end %>
+      </div>
+    </div>
+</div>

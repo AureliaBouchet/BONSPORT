@@ -140,14 +140,20 @@
     <div class="row">
       <% Playground.where(user:@user).each do |playground| %>
         <div class="col-xs-12 col-sm-4">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path playground.photo, height: 300, width: 400, crop: :fill %>);">
-          <div class="card-category"><%=playground.category%> <%="-"%> <%=playground.price%> <%="€/h"%>
-          </div>
-          <div class="card-description">
-            <h2><%=playground.title%></h2>
-            <p><%=playground.address%></p>
-          </div>
-            <a class="card-link" href="#" ><%= link_to "", playground_path(playground.id) %></a>
+          <div class="card card-dash" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path playground.photo, height: 300, width: 400, crop: :fill %>);">
+            <div class="card-category"><%=playground.category%> <%="-"%> <%=playground.price%> <%="€/h"%>
+            </div>
+            <div class="card-description links-on-card">
+              <h2> <%= link_to playground.title, playground_path(playground.id)%></h2>
+              <p><%=playground.address%></p>
+            </div>
+            <div class="links-on-card position-card">
+                <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_playground_path(playground.id) %>
+                <%= link_to playground_path(playground.id),  method: :delete,
+                          data: { confirm: "Are you sure?" } do %>
+                            <i class="far fa-trash-alt"></i>
+                            <% end %>
+            </div>
           </div>
         </div>
       <% end %>

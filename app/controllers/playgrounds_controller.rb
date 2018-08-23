@@ -31,6 +31,23 @@ class PlaygroundsController < ApplicationController
     @playground = Playground.find(params[:id])
   end
 
+  def edit
+    @playground = Playground.find(params[:id])
+  end
+
+  def update
+    @playground = Playground.find(params[:id])
+    @playground.update(playground_params)
+    redirect_to user_path(current_user)
+  end
+
+  def destroy
+    @playground = Playground.find(params[:id])
+    @playground.destroy
+    redirect_to user_path(current_user)
+  end
+
+
   private
   def playground_params
     params.require(:playground).permit(:title, :description, :photo, :address, :price, :category)
