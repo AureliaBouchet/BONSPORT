@@ -4,5 +4,5 @@ import { loadDynamicBannerText } from '../components/banner';
 loadDynamicBannerText();
 
 
-// import { DisplayingTabWhenClick } from '../components/navbar';
-// DisplayingTabWhenClick();
+//import { DisplayingTabWhenClick } from '../components/navbar';
+//DisplayingTabWhenClick();

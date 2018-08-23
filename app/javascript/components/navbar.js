@@ -1,4 +1,5 @@
 function DisplayingTabWhenClick() {
+
 // liens dans la navbar
   const profile = document.getElementById('profile-link');
   const resa = document.getElementById('resa-link');
@@ -9,9 +10,11 @@ function DisplayingTabWhenClick() {
   const playgroundTab = document.getElementById('playgrounds');
 
 console.log(profile)
+console.log(profile.href)
 console.log(profileTab)
 
     profile.addEventListener('click', () => {
+
       console.log("test")
       resaTab.classList.remove('active');
       playgroundTab.classList.remove('active');
