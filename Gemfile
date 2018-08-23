@@ -11,6 +11,7 @@ gem 'redis'
 gem 'devise'
 gem "geocoder"
 gem 'pg_search'
+gem 'flatpickr_rails'
 
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'

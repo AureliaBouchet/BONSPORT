@@ -1,26 +1,35 @@
 <div class="show-general">
-<h1><%= @playground.title %></h1>
-
-<div class="show" style="background-image: url('<%= cl_image_path @playground.photo, crop: :fill %>')">
-</div>
-<!--  -->
-
-<div class="show-category"><%= @playground.category %></div>
-<!--  -->
-<div class="show-price"><%= @playground.price %> €/h</div>
-<!--  -->
-
-<div class="show-address"><%= @playground.address %></div>
-<!--  -->
-
-<div class="show-description"> <%= @playground.description %> </div>
+  <h1><%= @playground.title %></h1>
+    <div class="show-playground-calendar" style="display: flex">
+      <div class="show-playground">
+        <div class="show" style="background-image: url('<%= cl_image_path @playground.photo, crop: :fill %>')">
+        </div>
+        <!--  -->
+        <div class="show-category"><%= @playground.category %></div>
+        <!--  -->
+        <div class="show-price"><%= @playground.price %> €/h</div>
+        <!--  -->
+        <div class="show-address"><%= @playground.address %></div>
+        <!--  -->
+        <div class="show-description"> <%= @playground.description %> </div>
+      </div>
+      <%= simple_form_for [@playground, @reservation] do |f| %>
+        <div class="form-inputs" style="width: 300px">
+           <%= f.input :date_begin, as: :string, required: false, label: "Du :" %>
+           <%= f.input :date_end, as: :string, required: false, label: "Au :" %>
+        </div>
+        <div class="form-actions">
+          <%= f.submit "Réserver", class: "main-button" %>
+        </div>
+      <% end %>
+    </div>
 <!--  -->
 
 <!-- <img class="show-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
 <!-- <a class="show-link" href="#" ></a>
  -->
-<%= link_to "Retour à la liste", playgrounds_path, class: "btn btn-default" %>
-<%= link_to "Réserver", new_playground_reservation_path(@playground), class: "btn btn-default" %>
+  <%= link_to "Retour à la liste", playgrounds_path, class: "btn btn-default" %>
+  <%= link_to "Réserver", new_playground_reservation_path(@playground), class: "btn btn-default" %>
 
 </div>
 
