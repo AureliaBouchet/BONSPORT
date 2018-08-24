@@ -10,25 +10,26 @@
   border-bottom: none;
 }
 .reservation-date {
-  flex-grow: 1;
+  // flex-grow: 1;
+  width: 800px;
   padding-left: 10px;
-  font-size: 13px;
+  font-size: 16px;
   color: rgba(0,0,0,0.7);
 }
 
 .reservation-status {
-  // width: 200px;
-  font-size: 14px;
+  width: 400px;
+  font-size: 18px;
   font-weight: bold;
 }
 .reservation-user{
-  width: 200px;
+  width: 300px;
   display: flex;
   align-items: center;
 }
 
 .reservation-user p {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: lighter;
   opacity: 0.6;
   margin: 5px;
@@ -79,4 +80,16 @@
 
 .hidden{
   display: none;
+}
+
+.fa-check-circle{
+  font-size: 30px;
+}
+
+.fa-times-circle{
+  font-size: 30px;
+}
+
+.btn-add {
+  margin-top: 30px;
 }

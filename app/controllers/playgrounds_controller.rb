@@ -11,7 +11,7 @@ class PlaygroundsController < ApplicationController
     @playground.user = @user
     if @playground.save
       redirect_to user_path(current_user, page: "playground")
-      flash[:notice] = "La nouvelle création a été effectuée"
+      flash[:notice] = "La création de votre nouveau playground a été effectuée"
     else
       flash[:alert] = "Vous devez remplir les champs obligatoires"
       render :new
@@ -52,6 +52,7 @@ class PlaygroundsController < ApplicationController
     @playground = Playground.find(params[:id])
     @playground.destroy
     redirect_to user_path(current_user, page: "playground")
+    flash[:notice] = "Votre playground a bien été supprimé!"
   end
 
 

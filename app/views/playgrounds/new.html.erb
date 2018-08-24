@@ -5,12 +5,13 @@
 
       <div class="form">
         <%= simple_form_for @playground do |f| %>
-          <%= f.input :title %>
-          <%= f.input :description %>
-          <%= f.input :category %>
-          <%= f.input :address %>
-          <%= f.input :price %>
-          <%= f.input :photo %>
+          <%= f.input :title, label: 'Titre' %>
+          <%= f.input :description, label: 'Description' %>
+          <%= f.label :category, label: 'Catégorie'%>
+          <%= f.select :category, options_for_select(%w[Piscine Tennis Basketball Pingpong Pétanque]), prompt:"-- Catégorie --" %>
+          <%= f.input :address, label: 'Adresse' %>
+          <%= f.input :price, label: 'Prix' %>
+          <%= f.input :photo, label: 'Ajouter une photo' %>
 
           <%= f.submit "Ajouter un playground", class: "btn btn-primary" %>
         <% end %>
