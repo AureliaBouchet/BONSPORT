@@ -62,3 +62,10 @@
 .card-description h1{
   font-size:50px;
 }
+
+.map-container {
+  flex: 0 0 450px;
+  position: sticky;
+  top: 18px;
+  height: 100vh;
+}
