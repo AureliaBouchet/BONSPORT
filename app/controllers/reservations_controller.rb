@@ -18,7 +18,6 @@ class ReservationsController < ApplicationController
       flash[:notice] = "Votre demande de réservation a été créée, le propriétaire va vous répondre au plus vite."
     else
       render 'playgrounds/show'
-
     end
   end
 
@@ -28,7 +27,6 @@ class ReservationsController < ApplicationController
 
     redirect_to user_path(current_user, page: "playground")
     flash[:notice] = "Votre demande a bien été prise en compte!"
-
   end
 
 
