@@ -3,29 +3,34 @@ h1 {
   padding-top: 30px;
 }
 
+.btn {
+  border: none;
+  width: 200px;
+  padding: 15px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  color: white;
+  font-size: 16px;
+  background-color: rgba(189,113,66,0.7);
+  &:hover{
+    background-color: rgb(189,113,66);
+    color:white;
+  }
+}
 .show-content{
   display: flex;
+  align-items:flex-start;
   text-align: center;
-
-}
-.show {
-  height: 300px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  background-repeat: no-repeat;
-  background-position: center;
-  color: white;
-  position: relative;
-  margin: 50px 50px;
-}
-.show-user {
-
-  width: 40px;
-  border-radius: 50%;
+  h2{
+    margin:0;
+    padding-bottom:10px;
+  }
 }
 .show-category {
-
   text-align: center;
-
   font-size: 15px;
   text-transform: uppercase;
   margin-top: 50px;
@@ -48,13 +53,53 @@ h1 {
   padding-bottom: 20px;
 }
 
+.show-calendar{
+  padding: 10px;
+  height: 300px;
+  width:33vw;
+  position: relative;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.show-playground{
+  height: 300px;
+  width:67vw;
+  border-right: solid 1px rgb(189,113,66);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
 .show-description {
   text-align: justify;
-  font-size: 14px;
-  padding: 30px 15px 15px 15px;
+  font-size: 16px;
+  padding: 0 20px;
+  // position:absolute;
+  // top:10px;
 }
 
-.show-link {
+
+// .input-inline{
+//   display:inline-block;
+//   margin : 10px 0;
+// }
+// .show-btn {
+//   // position: absolute;
+//   // bottom: 10px;
+// }
+
+// .show-calendar-content{
+//   // position:absolute;
+//   // bottom:10px
+// }
+// .calendar-input{
+//   // position:absolute;
+//   // top:10px;
+// }
+
+/* .show-link {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -63,49 +108,35 @@ h1 {
   z-index: 2;
   background: black;
   opacity: 0;
-}
-.card-link:hover {
+} */
+
+/* .card-link:hover {
   opacity: 0.1;
-}
+} */
 
-.btn {
-    background-color: rgba(189,113,66,0.7); /* Green */
-    border: none;
-    color: white;
-    padding: 15px 0px;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    font-size: 16px;
-    width: 200px;
-  &:hover{
-background-color: rgb(189,113,66);
-color:white;
-  }
-}
+/* .show {
+  height: 300px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+  position: relative;
+  margin: 50px 50px;
+} */
+/* .show-user {
+  width: 40px;
+  border-radius: 50%;
+} */
 
 
-
-.resa-embeded {
+/* .resa-embeded {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-}
-
+} */
+/*
 .border{
   border:solid 1px black;
-}
+} */
 
-.show-playground{
-  width:67vw;
-}
-.show-calendar{
-  width:33vw;
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
