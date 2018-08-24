@@ -19,29 +19,40 @@
 <!-- CONTENT -->
 
 
-<div class="show-content border">
+<div class="show-content">
 
   <div class="show-playground">
-    <div class="show-description"> <%= @playground.description %>
-    <div class="show-price">Prix:
-      <%= @playground.price %> €/h
+    <div class="show-description">
+      <h2>Ce playground en détail</h2>
+      <%= @playground.description %>
+      <div class="show-price">
+        Prix: <%= @playground.price %> €/h
+      </div>
     </div>
+   <div class="show-btn">
+    <%= link_to "Retourner à la liste", playgrounds_path, class: "btn " %>
     </div>
-    <%= link_to "Retourner à la liste", playgrounds_path, class: "btn" %>
   </div>
 
-
   <div class="show-calendar">
-    <h2>Votre réservation</h2>
-    <%= simple_form_for [@playground, @reservation] do |f| %>
-      <div class="form-inputs" >
-        <%= f.input :date_begin, as: :string, required: false, label: "Du :" %>
-        <%= f.input :date_end, as: :string, required: false, label: "Au :" %>
+      <div >
+      <h2>Votre réservation</h2>
       </div>
-      <div class="form-actions">
-        <%= f.submit "Réserver", class: "main-button btn" %>
+
+      <div >
+      <%= simple_form_for [@playground, @reservation] do |f| %>
+        <div class="form-inputs " >
+          <%= f.input :date_begin, as: :string, required: false, label: "Début" %>
+          <%= f.input :date_end, as: :string, required: false, label: "Fin" %>
+        </div>
+
+        <div class="form-actions ">
+          <%= f.submit "Réserver", class: "main-button btn" %>
+        </div>
+
+      <% end %>
       </div>
-    <% end %>
+
   </div>
 
 </div>

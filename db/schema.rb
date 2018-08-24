@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_23_092808) do
+ActiveRecord::Schema.define(version: 2018_08_24_084743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 2018_08_23_092808) do
     t.bigint "user_id"
     t.bigint "equipment_id"
     t.string "status", default: "En attente"
-    t.date "date_begin"
-    t.date "date_end"
+    t.datetime "date_begin"
+    t.datetime "date_end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "playground_id"
