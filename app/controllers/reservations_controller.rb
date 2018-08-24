@@ -26,7 +26,7 @@ class ReservationsController < ApplicationController
     @reservation.update(reservation_params)
 
     redirect_to user_path(current_user, page: "playground")
-    flash[:notice] = "Votre demande a bien été prise en compte!"
+    flash[:notice] = "Votre demande a bien été prise en compte !"
   end
 
 
