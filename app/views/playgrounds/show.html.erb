@@ -23,10 +23,10 @@
 
   <div class="show-playground">
     <div class="show-description">
-      <h2>Ce playground en détail</h2>
+      <h2></h2>
       <%= @playground.description %>
       <div class="show-price">
-        Prix: <%= @playground.price %> €/h
+        Prix : <%= @playground.price %> €/h
       </div>
     </div>
    <div class="show-btn">
@@ -36,7 +36,7 @@
 
   <div class="show-calendar">
       <div >
-      <h2>Votre réservation</h2>
+      <h2>A vous de jouer !</h2>
       </div>
 
       <div >
@@ -65,18 +65,14 @@
 
   <div id="reviews">
     <% if @playground.reviews.blank? %>
-
       Soyez le premier à laisser un commentaire à <%= @playground.user.first_name %> - <%= @playground.title %>
-    </div>
     <% else %>
-
       <% @playground.reviews.each do |review| %>
         <%= render 'reviews/show', review: review %>
       <% end %>
-
     <% end %>
-    </div>
   </div>
+</div>
 <div class="show-review">
 <%= render 'reviews/form', playground: @playground, review: @review %>
 </div>

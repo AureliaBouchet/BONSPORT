@@ -7,7 +7,6 @@ flatpickr("#reservation_date_begin", {
  enableTime: true,
  minTime: "09:00",
  maxTime: "20:00",
- dateFormat: "d.m.Y",
  time_24hr: true,
  plugins: [new rangePlugin({ input: "#reservation_date_end"})]
 })
