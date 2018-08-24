@@ -4,8 +4,6 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.playground_id = @playground.id
-    p "hhh---------------------------------"
-    p @review.save
     if @review.save
         respond_to do |format|
         format.html { redirect_to playground_path(@playground) }
