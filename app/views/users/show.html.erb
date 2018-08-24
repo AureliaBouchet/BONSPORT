@@ -97,7 +97,7 @@
             <p><%= reservation.playground.user.last_name.capitalize %></p>
           </div>
           <div class="reservation-date text-center">
-            <p> Reservation du : <%= reservation.date_begin.strftime("%-d/%-m/%y: %H:%M") %> au : <%= reservation.date_end.strftime("%-d/%-m/%y: %H:%M") %></p>
+            <p> Reservation du : <strong><%= reservation.date_begin.strftime("%-d/%-m/%y: %H:%M") %></strong> au : <strong><%= reservation.date_end.strftime("%-d/%-m/%y: %H:%M") %></strong></p>
           </div>
           <div class="reservation-status text-center">
 
@@ -168,18 +168,18 @@
               <p><%= reservation.user.last_name.capitalize %></p>
             </div>
             <div class="reservation-date text-center">
-              <p> Reservation du : <%= reservation.date_begin.strftime("%-d/%-m/%y: %H:%M") %> au : <%= reservation.date_end.strftime("%-d/%-m/%y: %H:%M") %></p>
+              <p> Reservation du : <strong><%= reservation.date_begin.strftime("%-d/%-m/%y: %H:%M") %></strong> au : <strong><%= reservation.date_end.strftime("%-d/%-m/%y: %H:%M") %></strong></p>
             </div>
             <div class="reservation-status text-center">
 
               <%= simple_form_for reservation do |f| %>
                 <%if reservation.status == 'En attente' %>
-                  <%= f.input_field :status,  as: :radio_buttons, collection: ['Validé', 'Refusé'], label: false, onclick: "this.form.submit();" %>
+                  <%= f.input_field :status,  as: :radio_buttons,collection: ["<i class='fas fa-check'></i>".html_safe, '<i class="fas fa-times"></i>'.html_safe], label: false, onclick: "this.form.submit();"  %>
                 <% else %>
                   <%if reservation.status == 'Validé' %>
-                  <i class="fas fa-check-circle confirm"></i>
+                  <i class="fas fa-check"></i>
                   <% else %>
-                  <i class="fas fa-times-circle decline"></i>
+                  <i class="fas fa-times"></i>
                   <% end %>
                 <% end %>
               <% end %>
