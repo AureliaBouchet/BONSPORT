@@ -6,22 +6,28 @@ class ReservationsController < ApplicationController
   end
 
   def create
+
+
     @reservation = Reservation.new(reservation_params)
     @playground = Playground.find(params[:playground_id])
     @reservation.playground = @playground
     @reservation.user = current_user
 
     if @reservation.save
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user, page: "resa")
+      flash[:notice] = "Votre demande de réservation a été créée, le propriétaire va vous répondre au plus vite."
     else
-      render "reservations/new"
+      render 'playgrounds/show'
+
     end
   end
 
   def update
     @reservation = Reservation.find(params[:id])
     @reservation.update(reservation_params)
-    redirect_to user_path(current_user)
+
+    redirect_to user_path(current_user, page: "playground")
+    flash[:notice] = "Votre demande a bien été prise en compte!"
 
   end
 

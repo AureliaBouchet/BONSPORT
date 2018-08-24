@@ -1,22 +1,17 @@
 <div class="container">
   <!-- <form action="/playgrounds" style="width: 100%; height: 50px; margin-top: 25px; margin-bottom: 15px; text-align: center; padding: 0px;" method="get"> -->
     <!-- <input type="text" placeholder="Quel est votre terrain de jeu ?" style= "width: 50%; font-size: 18px; font-style: italic; height: 100%; border: 1px; padding: 5px;"> -->
-<!--   <div class="global-search" style="display: flex">
- -->    <%= form_tag playgrounds_path, class: "new-search-bar", method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Indiquez la catégorie de playground, le lieu"%>
-    <%= submit_tag value="Go!", class: "btn-default" %>
-    <% end %>
- <!--  </div> -->
 
+<div class="tagline">
+  <h2> Découvrez les terrains autour de vous</h2>
+
+</div>
 
   <div class="hidden-xs flex">
     <div class="cards">
       <div class="row">
         <% @playgrounds.each do |playground| %>
-          <div class="col-xs-12 col-sm-4">
+          <div class="col-xs-12 col-sm-4 card-padding">
             <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path playground.photo, height: 300, width: 400, crop: :fill %>);">
               <div class="card-category"><%=playground.category%> <%="-"%> <%=playground.price%> <%="€/h"%></div>
               <div class="card-description">
@@ -32,7 +27,7 @@
 
     <div
       id="map"
-      style="width: 100%; flex: 0 0 450px; height: 100vh; position: sticky; top: 0;"
+      style="width: 100%; flex: 0 0 450px; height: 100vh; position: sticky !important; top: 0; margin-left: 15px; margin-top: 5px;"
       data-markers="<%= @markers.to_json %>">
     </div>
   </div>

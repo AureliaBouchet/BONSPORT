@@ -1,10 +1,19 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    PLAYGROUND
-    <%#= image_tag "logo.png", height: 50 %>
-  <% end %>
+   <%= link_to "Playground.", playgrounds_path, class: "navbar-wagon-brand logo" %>
 
+
+ <div class="search-box">
+
+<%= form_tag playgrounds_path, class: "new-search-bar", method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control form-control-sm",
+    style: "font-size: 14px;",
+    placeholder: "Cherchez votre playground"%>
+<%= submit_tag value="Go", class: "btn-default"  %>
+<% end %>
+ </div>
 
   <!-- Right Navigation -->
 
@@ -13,9 +22,7 @@
 <!-- LARGE DEVICE -->
 
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-     <%= link_to playgrounds_path, class: "navbar-wagon-item navbar-wagon-link" do %>
-          <i class="fas fa-search"></i> Trouver un playground
-          <% end %>
+
 
 
 
@@ -31,9 +38,9 @@
 
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li class= "border-bottom welcome"> Welcome <%= current_user.first_name %></li>
-            <li> <%= link_to "Mon profil", user_path(current_user), id:"profile-link" %></li>
-            <li><%= link_to "Mes réservations", user_path(current_user), id:"resa-link" %></li>
-            <li><%= link_to "Mes playgrounds", user_path(current_user), id:"playground-link" %></li>
+            <li> <%= link_to "Mon profil", user_path(current_user, page: "profile"), id:"profile-link" %></li>
+            <li><%= link_to "Mes réservations", user_path(current_user, page: "resa"), id:"resa-link" %></li>
+            <li><%= link_to "Mes playgrounds", user_path(current_user, page: "playground"), id:"playground-link" %></li>
             <li> <%= link_to destroy_user_session_path, method: :delete do %>
                   <i class="fas fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %>
                 <% end %>

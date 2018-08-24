@@ -3,16 +3,37 @@
 <div>
 
   <!-- Nav tabs -->
-  <ul class="nav nav-tabs tab-general" role="tablist">
-    <li role="presentation" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profil</a></li>
-    <li role="presentation" class="active"><a href="#resa" aria-controls="resa" role="tab" data-toggle="tab">Mes réservations</a></li>
-    <li role="presentation"><a href="#playgrounds" aria-controls="playgrounds" role="tab" data-toggle="tab">Mes playgrounds</a></li>
+  <ul class="nav nav-tabs tab-general tab-color" role="tablist">
+    <% if @page == "profile" %>
+      <li role="presentation" class="active" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Mon profil</a></li>
+    <% else %>
+      <li role="presentation" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Mon profil</a></li>
+    <% end %>
+
+    <% if @page == "resa" %>
+      <li role="presentation" class="active"><a href="#resa" aria-controls="resa" role="tab" data-toggle="tab">Mes réservations</a></li>
+    <% else %>
+      <li role="presentation"><a href="#resa" aria-controls="resa" role="tab" data-toggle="tab">Mes réservations</a></li>
+    <% end %>
+
+    <% if @page == "playground" %>
+      <li role="presentation" class="active"><a href="#playgrounds" aria-controls="playgrounds" role="tab" data-toggle="tab">Mes playgrounds</a></li>
+    <% else %>
+      <li role="presentation"><a href="#playgrounds" aria-controls="playgrounds" role="tab" data-toggle="tab">Mes playgrounds</a></li>
+    <% end %>
+
   </ul>
+
 
 
  <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane" id="profile">
+
+<% if @page == "profile" %>
+      <div role="tabpanel" class="tab-pane active" id="profile">
+<% else %>
+      <div role="tabpanel" class="tab-pane" id="profile">
+<% end %>
 <!-- TAB PROFILE -->
       <div class="profile">
         <div class="info">
@@ -31,9 +52,15 @@
     </div>
 
 <!-- TAB RESERVATION -->
+<% if @page == "resa" %>
     <div role="tabpanel" class="tab-pane active" id="resa">
-
+<% else %>
+    <div role="tabpanel" class="tab-pane" id="resa">
+<% end %>
       <div class="row">
+      <% if Reservation.where(user: current_user) == []%>
+        <p class="msg">Vous n'avez pas encore de réservation</p>
+      <%else %>
       <div class="reservation-dash">
         <div class="reservation-user text-center title">
           <h2>Playground</h2>
@@ -51,41 +78,47 @@
         </div>
       </div>
 
-      <% Reservation.where(user: current_user).each do |reservation| %>
-      <div class="reservation-dash">
-        <div class="reservation-user">
-        <p><%= reservation.playground.title %></p>
-      </div>
-        <div class="reservation-user">
-          <div class="img-user">
-            <% if reservation.playground.user.photo.file.nil? %>
-              <% proprio_avatar = 'user' %>
-            <% else %>
-              <% proprio_avatar = reservation.playground.user.photo %>
-            <% end %>
-            <p> <%= cl_image_tag proprio_avatar, class: "avatar-large" %></p>
-          </div>
-        <p><%= reservation.playground.user.first_name.capitalize %></p>
-        <p><%= reservation.playground.user.last_name.capitalize %></p>
-        </div>
-        <div class="reservation-date text-center">
-           <p> Reservation du : <%= reservation.date_begin %> au : <%= reservation.date_end %></p>
-        </div>
-        <div class="reservation-status">
-            <p class="status pending"><%= reservation.status %></p>
-        </div>
-    </div>
-    <% end %>
 
+        <% Reservation.where(user: current_user).each do |reservation| %>
+        <div class="reservation-dash">
+          <div class="reservation-user">
+            <p><%= reservation.playground.title %></p>
+          </div>
+          <div class="reservation-user">
+            <div class="img-user">
+              <% if reservation.playground.user.photo.file.nil? %>
+                <% proprio_avatar = 'user' %>
+              <% else %>
+                <% proprio_avatar = reservation.playground.user.photo %>
+              <% end %>
+              <p> <%= cl_image_tag proprio_avatar, class: "avatar-large" %></p>
+            </div>
+            <p><%= reservation.playground.user.first_name.capitalize %></p>
+            <p><%= reservation.playground.user.last_name.capitalize %></p>
+          </div>
+          <div class="reservation-date text-center">
+            <p> Reservation du : <%= reservation.date_begin %> au : <%= reservation.date_end %></p>
+          </div>
+          <div class="reservation-status">
+            <p class="status pending"><%= reservation.status %></p>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
   </div>
 
 </div>
+
 <!-- TAB PLAYGROUND -->
+<% if @page == "playground"  %>
+<div role="tabpanel" class="tab-pane active" id="playgrounds">
+<% else %>
 <div role="tabpanel" class="tab-pane" id="playgrounds">
+<% end %>
 
 
   <% if Playground.where(user:@user) == []%>
-    <p class="msg">You have no playgrounds yet</p>
+    <p class="msg">Vous n'avez pas encore ajouté de playground</p>
   <%else %>
 
 <h2> Réservations de mes playgrounds en cours : </h2>
@@ -173,7 +206,7 @@
     </div>
   <% end%>
 
-  <%= link_to "add a playground", new_playground_path, class: "btn btn-default" %>
+  <%= link_to "Ajouter un playground", new_playground_path, class: "btn" %>
 
 </div>
 
