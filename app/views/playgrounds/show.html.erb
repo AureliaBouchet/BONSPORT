@@ -57,7 +57,29 @@
 
 </div>
 
+<div class="show-review border-top-grey">
+  <h1>Avis des utilisateurs</h1>
+  <h2 class="text-center">- <%= pluralize @playground.reviews.size, "commentaire" %> -
+  </h2>
 
+
+  <div id="reviews">
+    <% if @playground.reviews.blank? %>
+
+      Soyez le premier à laisser un commentaire à <%= @playground.user.first_name %> - <%= @playground.title %>
+    </div>
+    <% else %>
+
+      <% @playground.reviews.each do |review| %>
+        <%= render 'reviews/show', review: review %>
+      <% end %>
+
+    <% end %>
+    </div>
+  </div>
+<div class="show-review">
+<%= render 'reviews/form', playground: @playground, review: @review %>
+</div>
 
 
 

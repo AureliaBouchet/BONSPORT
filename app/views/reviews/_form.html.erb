@@ -1,0 +1,6 @@
+
+  <%= simple_form_for([playground,review ], remote: true) do |form| %>
+    <%= form.input :comment, as: :text, label: "Laissez votre commentaire :" %>
+    <%= form.button :submit, value= "Poster" %>
+  <% end %>
+
