@@ -78,11 +78,12 @@
     </div>
   </div>
 
-    <%else %>
-        <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to t(".sign_up", default: "Sign up"),  new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
+      <%else %>
+          <!-- Login link (when logged out) -->
+        <div>
+        <%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to t(".sign_up", default: "Créer un compte"),  new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        </div>
 
     <% end %>
 
