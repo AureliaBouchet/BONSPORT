@@ -100,7 +100,19 @@
             <p> Reservation du : <%= reservation.date_begin %> au : <%= reservation.date_end %></p>
           </div>
           <div class="reservation-status">
-            <p class="status pending"><%= reservation.status %></p>
+
+
+            <% if reservation.status == "Validé" %>
+              <% color = "status confirm" %>
+            <% elsif reservation.status == "Refusé" %>
+              <% color = "status decline"%>
+            <% else %>
+              <% color = "status pending"%>
+            <% end %>
+
+            <p class="<%=color%>"><%=reservation.status%></p>
+
+
           </div>
         </div>
         <% end %>
@@ -164,7 +176,7 @@
               <%= simple_form_for reservation do |f| %>
                 <%if reservation.status == 'En attente' %>
                   <%= f.input_field :status,  as: :radio_buttons, collection: ['Validé', 'Refusé'], label: false %>
-                  <%= f.submit "Modifier statut", class: "btn btn-default" %>
+                  <%= f.submit "Changer le statut", class: "btn btn-default" %>
                 <% else %>
                   <%if reservation.status == 'Validé' %>
                   <i class="fas fa-check-circle confirm"></i>
@@ -172,7 +184,6 @@
                   <i class="fas fa-times-circle decline"></i>
                   <% end %>
                 <% end %>
-                  <p class="msg-status ">Vous avez <%= reservation.status.downcase %> la réservation</p>
               <% end %>
 
             </div>
