@@ -174,7 +174,7 @@
 
               <%= simple_form_for reservation do |f| %>
                 <%if reservation.status == 'En attente' %>
-                  <%= f.input_field :status,  as: :radio_buttons,collection: ["<i class='fas fa-check'></i>".html_safe, '<i class="fas fa-times"></i>'.html_safe], label: false, onclick: "this.form.submit();"  %>
+                  <%= f.input_field :status,  as: :radio_buttons, collection: ["Validé", "Refusé"], label: false, onclick: "this.form.submit();"  %>
                 <% else %>
                   <%if reservation.status == 'Validé' %>
                   <i class="fas fa-check"></i>
