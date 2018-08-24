@@ -66,7 +66,7 @@
           <h2>Playground</h2>
         </div>
         <div class="reservation-user text-center title">
-          <h2>Proprietaire</h2>
+          <h2>Propriétaire</h2>
         </div>
 
         <div class="reservation-date text-center  title">
@@ -79,10 +79,10 @@
       </div>
 
 
-        <% Reservation.where(user: current_user).each do |reservation| %>
+        <% Reservation.where(user: current_user).reverse_each do |reservation| %>
         <div class="reservation-dash">
           <div class="reservation-user">
-            <p><%= reservation.playground.title %></p>
+            <p><%= reservation.playground.title.capitalize %></p>
           </div>
           <div class="reservation-user">
             <div class="img-user">
@@ -99,7 +99,7 @@
           <div class="reservation-date text-center">
             <p> Reservation du : <%= reservation.date_begin %> au : <%= reservation.date_end %></p>
           </div>
-          <div class="reservation-status">
+          <div class="reservation-status text-center">
 
 
             <% if reservation.status == "Validé" %>
@@ -133,11 +133,10 @@
     <p class="msg">Vous n'avez pas encore ajouté de playground</p>
   <%else %>
 
-<h2> Réservations de mes playgrounds en cours : </h2>
     <div class="row">
       <div class="reservation-dash">
         <div class="reservation-playground reservation-user text-center title">
-          <h2>Playgrounds</h2>
+          <h2>Playground</h2>
         </div>
         <div class="reservation-user text-center title">
           <h2>Locataire</h2>
@@ -150,11 +149,11 @@
         </div>
       </div>
 
-      <% Reservation.all.each do |reservation| %>
+      <% Reservation.all.reverse_each do |reservation| %>
         <% if reservation.playground.user == current_user  %>
           <div class="reservation-dash">
             <div class="reservation-playground reservation-user">
-              <p><%= reservation.playground.title %></p>
+              <p><%= reservation.playground.title.capitalize %></p>
             </div>
             <div class="reservation-user">
               <div class="img-user">
@@ -175,8 +174,7 @@
 
               <%= simple_form_for reservation do |f| %>
                 <%if reservation.status == 'En attente' %>
-                  <%= f.input_field :status,  as: :radio_buttons, collection: ['Validé', 'Refusé'], label: false %>
-                  <%= f.submit "Changer le statut", class: "btn btn-default" %>
+                  <%= f.input_field :status,  as: :radio_buttons, collection: ['Validé', 'Refusé'], label: false, onclick: "this.form.submit();" %>
                 <% else %>
                   <%if reservation.status == 'Validé' %>
                   <i class="fas fa-check-circle confirm"></i>
@@ -185,7 +183,6 @@
                   <% end %>
                 <% end %>
               <% end %>
-
             </div>
           </div>
         <% end %>
@@ -195,7 +192,7 @@
     <h2> Accéder à mes playgrounds  </h2>
 
     <div class="row">
-      <% Playground.where(user:@user).each do |playground| %>
+      <% Playground.where(user:@user).reverse_each do |playground| %>
         <div class="col-xs-12 col-sm-4">
           <div class="card card-dash" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path playground.photo, height: 300, width: 400, crop: :fill %>);">
             <div class="card-category"><%=playground.category%> <%="-"%> <%=playground.price%> <%="€/h"%>
@@ -217,7 +214,7 @@
     </div>
   <% end%>
 
-  <%= link_to "Ajouter un playground", new_playground_path, class: "btn" %>
+  <%= link_to "Ajouter un playground", new_playground_path, class: "btn btn-add" %>
 
 </div>
 
