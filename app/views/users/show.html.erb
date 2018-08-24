@@ -97,7 +97,7 @@
             <p><%= reservation.playground.user.last_name.capitalize %></p>
           </div>
           <div class="reservation-date text-center">
-            <p> Reservation du : <%= reservation.date_begin %> au : <%= reservation.date_end %></p>
+            <p> Reservation du : <%= reservation.date_begin.strftime("%-d/%-m/%y: %H:%M") %> au : <%= reservation.date_end.strftime("%-d/%-m/%y: %H:%M") %></p>
           </div>
           <div class="reservation-status">
 
@@ -169,7 +169,7 @@
               <p><%= reservation.user.last_name.capitalize %></p>
             </div>
             <div class="reservation-date text-center">
-              <p> Reservation du : <%= reservation.date_begin %> au : <%= reservation.date_end %></p>
+              <p> Reservation du : <%= reservation.date_begin.strftime("%-d/%-m/%y: %H:%M") %> au : <%= reservation.date_end.strftime("%-d/%-m/%y: %H:%M") %></p>
             </div>
             <div class="reservation-status text-center">
 
