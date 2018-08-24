@@ -1,5 +1,5 @@
 <div class="form-container">
-<h2>Sign up</h2>
+<h2>Créer un compte</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
@@ -10,20 +10,22 @@
                 autofocus: true ,
                 input_html: { autocomplete: "email" }%>
 
-    <%= f.input :first_name, required: true %>
-    <%= f.input :last_name, required: true%>
+    <%= f.input :first_name, required: true, label: "Prénom" %>
+    <%= f.input :last_name, required: true, label: "Nom"%>
 
     <%= f.input :password,
                 required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                label: "Mot de passe",
+                hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 required: true,
+                label: "Confirmation du mot de passe",
                 input_html: { autocomplete: "new-password" } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Créer mon compte" %>
   </div>
 <% end %>
 

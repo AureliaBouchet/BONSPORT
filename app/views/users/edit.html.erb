@@ -1,11 +1,15 @@
-<h1>Modifier mon profil</h1>
+<div class="form-container">
 
-<div class="form">
-  <%= simple_form_for @user do |f| %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
-    <%= f.submit "Modifier mon profil", class: "btn btn-default" %>
-  <% end %>
+  <h1 class="text-left">Modifier mon profil</h1>
+
+  <div class="form">
+    <%= simple_form_for @user do |f| %>
+      <%= f.input :first_name, label: "Prénom" %>
+      <%= f.input :last_name, label: "Nom" %>
+      <%= f.input :photo, label: "Photo" %>
+      <%= f.input :photo_cache, as: :hidden %>
+      <%= f.submit "Modifier mon profil", class: "btn btn-default" %>
+    <% end %>
+  </div>
+
 </div>
